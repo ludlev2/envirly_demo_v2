@@ -1,393 +1,396 @@
 {
     "pages": {
         "login": {
-            "title": "Melden Sie sich bei Ihrem Konto an",
-            "signin": "Einloggen",
-            "signup": "Anmelden",
-            "divider": "oder",
+            "title": "Zaloguj się do swojego konta",
+            "signin": "Zaloguj się",
+            "signup": "Zarejestruj się",
+            "divider": "lub",
             "fields": {
                 "email": "Email",
-                "password": "Passwort"
+                "password": "Hasło"
             },
             "errors": {
-                "validEmail": "Ungültige E-Mail-Adresse"
+                "validEmail": "Nieprawidłowy adres email"
             },
             "buttons": {
-                "submit": "Anmeldung",
-                "forgotPassword": "Passwort vergessen?",
-                "noAccount": "Sie haben kein Konto?",
-                "rememberMe": "Erinnere dich an mich"
+                "submit": "Zaloguj",
+                "forgotPassword": "Zapomniałeś hasła?",
+                "noAccount": "Nie masz konta?",
+                "rememberMe": "Zapamiętaj mnie"
             }
         },
         "forgotPassword": {
-            "title": "Haben Sie Ihr Passwort vergessen?",
+            "title": "Zapomniałeś hasła?",
             "fields": {
                 "email": "Email"
             },
             "errors": {
-                "validEmail": "Ungültige E-Mail-Adresse"
+                "validEmail": "Nieprawidłowy adres email"
             },
             "buttons": {
-                "submit": "Anweisungen zum Zurücksetzen senden"
+                "submit": "Wyślij instrukcje resetowania"
             }
         },
         "register": {
-            "title": "Registrieren Sie sich für Ihr Konto",
+            "title": "Zarejestruj się na swoje konto",
             "fields": {
                 "email": "Email",
-                "password": "Passwort"
+                "password": "Hasło"
             },
             "errors": {
-                "validEmail": "Ungültige E-Mail-Adresse"
+                "validEmail": "Nieprawidłowy adres email"
             },
             "buttons": {
-                "submit": "Registrieren",
-                "haveAccount": "Ein Konto haben?"
+                "submit": "Zarejestruj",
+                "haveAccount": "Masz już konto?"
             }
         },
         "updatePassword": {
-            "title": "Kennwort aktualisieren",
+            "title": "Zaktualizuj hasło",
             "fields": {
-                "password": "Neues Passwort",
-                "confirmPassword": "Bestätige neues Passwort"
+                "password": "Nowe hasło",
+                "confirmPassword": "Potwierdź nowe hasło"
             },
             "errors": {
-                "confirmPasswordNotMatch": "Passwörter stimmen nicht überein"
+                "confirmPasswordNotMatch": "Hasła nie są zgodne"
             },
             "buttons": {
-                "submit": "Aktualisieren"
+                "submit": "Aktualizuj"
             }
         },
         "error": {
-            "info": "Sie haben vergessen, {{action}} component zu {{resource}} hinzufügen.",
-            "404": "Leider existiert diese Seite nicht.",
-            "resource404": "Haben Sie die {{resource}} resource erstellt?",
-            "backHome": "Zurück"
+            "info": "Możliwe, że zapomniałeś dodać komponent {{action}} do zasobu {{resource}}.",
+            "404": "Przepraszamy, strona której szukasz nie istnieje.",
+            "resource404": "Czy jesteś pewien, że utworzyłeś zasób {{resource}}.",
+            "backHome": "Powrót do strony głównej"
         }
     },
     "actions": {
-        "list": "Aufführen",
-        "create": "Erstellen",
-        "edit": "Bearbeiten",
-        "show": "Zeigen"
+        "list": "Lista",
+        "create": "Utwórz",
+        "edit": "Edytuj",
+        "show": "Pokaż"
     },
     "buttons": {
-        "create": "Erstellen",
-        "save": "Speichern",
-        "logout": "Abmelden",
-        "delete": "Löschen",
-        "edit": "Bearbeiten",
-        "cancel": "Abbrechen",
-        "confirm": "Sicher?",
-        "filter": "Filter",
-        "clear": "Löschen",
-        "refresh": "Erneuern",
-        "show": "Zeigen",
-        "undo": "Undo",
-        "import": "Importieren",
-        "export": "Exportieren",
-        "clone": "Klonen",
-        "accept": "Akzeptieren",
-        "acceptAll": "Alles akzeptieren",
-        "reject": "Abweisen",
-        "rejectAll": "Alles abweisen",
-        "nextStep": "Vorwärts",
-        "previousStep": "Zurück"
+        "add": "Dodaj",
+        "create": "Utwórz",
+        "save": "Zapisz",
+        "logout": "Wyloguj",
+        "delete": "Usuń",
+        "edit": "Edytuj",
+        "cancel": "Anuluj",
+        "confirm": "Czy jesteś pewny?",
+        "filter": "Filtruj",
+        "clear": "Wyczyść",
+        "refresh": "Odśwież",
+        "show": "Pokaż",
+        "undo": "Cofnij",
+        "import": "Importuj",
+        "export": "Eksportuj",
+        "clone": "Klonuj",
+        "accept": "Zaakceptuj",
+        "acceptAll": "Zaakceptuj wszystko",
+        "reject": "Odrzuć",
+        "rejectAll": "Odrzuć wszystko",
+        "nextStep": "Następny",
+        "previousStep": "Poprzedni"
     },
-    "loading": "Wird geladen",
+    "loading": "Ładowanie",
     "tags": {
-        "clone": "Klonen"
+        "clone": "Klonuj"
     },
     "table": {
-        "actions": "Aktionen"
+        "actions": "Akcje"
     },
     "search": {
-        "placeholder": "Suchen mit Geschäfts-ID, E-mail oder Stichwort",
-        "more": "Noch mehr"
+        "placeholder": "Szukaj po ID sklepu, E-mailu, Słowie kluczowym",
+        "more": "więcej"
     },
     "status": {
-        "enable": "Aktiv",
-        "disable": "Passiv"
+        "enable": "Włącz",
+        "disable": "Wyłącz"
     },
-    "warnWhenUnsavedChanges": "Nicht gespeicherte Änderungen werden nicht übernommen.",
+    "warnWhenUnsavedChanges": "Czy na pewno chcesz opuścić stronę? Masz niezapisane zmiany.",
     "notifications": {
-        "success": "Erfolg",
-        "error": "Fehler (status code: {{statusCode}})",
-        "undoable": "Sie haben {{seconds}} Sekunden Zeit für Undo.",
-        "createSuccess": "{{resource}} erfolgreich erstellt.",
-        "createError": "Fehler beim Erstellen {{resource}} (status code: {{statusCode}})",
-        "deleteSuccess": "{{resource}} erfolgreich gelöscht.",
-        "deleteError": "Fehler beim Löschen {{resource}} (status code: {{statusCode}})",
-        "editSuccess": "{{resource}} erfolgreich bearbeitet.",
-        "importProgress": "{{processed}}/{{total}} importiert"
+        "success": "Sukces",
+        "error": "Błąd (kod statusu: {{statusCode}})",
+        "undoable": "Masz {{seconds}} sekund na cofnięcie",
+        "createSuccess": "Pomyślnie utworzono {{resource}}",
+        "createError": "Wystąpił błąd podczas tworzenia {{resource}} (kod statusu: {{statusCode}})",
+        "deleteSuccess": "Pomyślnie usunięto {{resource}}",
+        "deleteError": "Błąd podczas usuwania {{resource}} (kod statusu: {{statusCode}})",
+        "editSuccess": "Pomyślnie zmieniono {{resource}}",
+        "editError": "Błąd podczas edycji {{resource}} (kod statusu: {{statusCode}})",
+        "importProgress": "Importowanie: {{processed}}/{{total}}"
     },
     "categories": {
-        "categories": "Kategorien",
+        "categories": "Kategorie",
         "titles": {
-            "list": "Kategorien"
+            "list": "Kategorie"
         },
         "fields": {
             "id": "ID",
-            "title": "Titel",
-            "isActive": "Aktiv"
+            "title": "Tytuł",
+            "isActive": "Aktywny"
         }
     },
     "couriers": {
-        "couriers": "Kuriere",
+        "couriers": "Kurierzy",
         "titles": {
-            "create": "Kurier erstellen",
-            "list": "Kuriere",
-            "edit": "Kurier bearbeiten"
+            "create": "Utwórz Kuriera",
+            "list": "Kurierzy",
+            "edit": "Edytuj Kuriera"
         },
         "fields": {
             "id": "ID",
             "avatar": {
-                "label": "Avatar",
-                "description": "Ein Foto hochladen."
+                "label": "Awatar",
+                "description": "Kliknij lub przeciągnij zdjęcie awatara w to miejsce, aby przesłać."
             },
-            "name": "Vorname",
-            "surname": "Nachname",
+            "name": "Imię",
+            "surname": "Nazwisko",
             "gender": {
-                "label": "Geschlecht",
-                "male": "Mann",
-                "female": "Frau"
+                "label": "Płeć",
+                "male": "Mężczyzna",
+                "female": "Kobieta"
             },
-            "gsm": "Gsm",
-            "createdAt": "Erstellt am",
-            "isActive": "Aktiv",
+            "gsm": "Telefon",
+            "email": "E-mail",
+            "address": "Adres",
+            "createdAt": "Data utworzenia",
+            "isActive": "Jest aktywny",
             "images": {
-                "label": "Foto",
-                "description": "Ein Foto hochladen.",
-                "validation": "Fotoauflösung: 480x480px"
+                "label": "Obrazy",
+                "description": "Dodaj zdjęcie użytkownika",
+                "validation": "musi być w rozmiarze 480x480 px"
             },
-            "store": "Geschäft",
-            "vehicle": "Fahrzeug",
-            "accountNumber": "Kontonummer",
-            "address": "Adresse"
+            "store": "Sklep",
+            "vehicle": "Pojazd",
+            "accountNumber": "Numer konta"
         },
         "steps": {
-            "content": "Inhalt",
-            "relations": "Beziehungen"
+            "content": "Treść",
+            "relations": "Relacje"
         }
     },
     "dashboard": {
         "title": "Panel",
         "deliveryMap": {
-            "title": "Lieferkarte"
+            "title": "Mapa dostaw"
         },
         "orders": {
-            "title": "Bestellungen"
+            "title": "Zamówienia"
         },
         "totalSales": {
-            "title": "Gesamtumsatz"
+            "title": "Całkowita sprzedaż"
         },
         "dailyRevenue": {
-            "title": "Tagesumsatz"
+            "title": "Dzienne przychody"
         },
         "dailyOrders": {
-            "title": "Tägliche Bestellungen"
+            "title": "Dzienne zamówienia"
         },
         "newCustomers": {
-            "title": "Neue Kunden"
+            "title": "Nowi klienci"
         },
         "timeline": {
-            "title": "Aktualisierung",
+            "title": "Oś czasu",
             "orderStatuses": {
-                "pending": "Wird vorbereiten.",
-                "ready": "Bereit",
-                "on the way": "Unterwegs",
-                "delivered": "Geliefert",
-                "cancelled": "Abgesagt"
+                "pending": "Przygotowanie zamówienia",
+                "ready": "Zamówienie gotowe",
+                "on the way": "Zamówienie w drodze",
+                "delivered": "Zamówienie dostarczone",
+                "cancelled": "Zamówienie anulowane"
             }
         },
         "recentOrders": {
-            "title": "Letzte Bestellungen"
+            "title": "Najnowsze zamówienia"
         },
         "trendingMenus": {
-            "title": "Täglich beliebte Menüs"
+            "title": "Popularne menu dnia"
         }
     },
     "enum": {
         "orderStatuses": {
-            "pending": "Wird vorbereiten.",
-            "ready": "Bereit",
-            "on the way": "Unterwegs",
-            "delivered": "Geliefert",
-            "cancelled": "Abgesagt"
+            "Pending": "Oczekujące",
+            "Ready": "Gotowe",
+            "On The Way": "W drodze",
+            "Delivered": "Dostarczone",
+            "Cancelled": "Anulowane"
         }
     },
     "orders": {
-        "orders": "Bestellungen",
+        "orders": "Zamówienia",
         "titles": {
-            "list": "Bestellungen",
-            "show": "Bestellung Info"
+            "list": "Zamówienia",
+            "show": "Pokaż Zamówienie"
         },
         "fields": {
-            "orderNumber": "Bestellungsnummer",
-            "orderID": "Bestellung ID",
-            "status": "Bestellung Status",
-            "store": "Geschäfts",
-            "user": "Benutzer",
-            "products": "Produkte",
-            "createdAt": "Erstellt am",
-            "amount": "Betrag",
-            "itemsAmount": "{{amount}} Produkt"
+            "orderNumber": "Numer Zamówienia",
+            "orderID": "ID Zamówienia",
+            "status": "Status",
+            "store": "Sklep",
+            "user": "Użytkownik",
+            "products": "Produkty",
+            "createdAt": "Utworzono",
+            "amount": "Kwota",
+            "itemsAmount": "{{amount}} przedmiotów"
         },
         "filter": {
-            "title": "Filter",
+            "title": "Filtry",
             "search": {
-                "label": "Suche",
-                "placeholder": "Suchen mit Geschäfts-ID, E-mail oder Stichwort"
+                "label": "Szukaj",
+                "placeholder": "Numer Zamówienia, Użytkownik, itp."
             },
             "status": {
-                "label": "Bestellung Status",
-                "placeholder": "Bestellung Status"
+                "label": "Status",
+                "placeholder": "Status Zamówienia"
             },
             "store": {
-                "label": "Geschäft",
-                "placeholder": "Geschäft Suchen"
+                "label": "Sklep",
+                "placeholder": "Szukaj Sklepów"
             },
             "user": {
-                "label": "Benutzer",
-                "placeholder": "Benutzer Suchen"
+                "label": "Użytkownik",
+                "placeholder": "Szukaj Użytkowników"
             },
             "createdAt": {
-                "label": "Erstellt am"
+                "label": "Utworzono"
             },
-            "submit": "Filter"
+            "submit": "Filtruj"
         },
         "courier": {
-            "deliveryTime": "Lieferzeit",
+            "deliveryTime": "Czas Dostawy",
             "phone": "Telefon"
         },
         "deliverables": {
-            "deliverables": "Wird geliefert",
+            "deliverables": "Dostawy",
             "fields": {
-                "items": "Produkte",
-                "quantity": "Betrag",
-                "price": "Preis",
-                "total": "Gesamtpreis"
+                "items": "Przedmioty",
+                "quantity": "Ilość",
+                "price": "Cena",
+                "total": "Suma"
             },
-            "mainTotal": "Gesamtpreis"
+            "mainTotal": "SUMA OGÓLNA"
         }
     },
     "products": {
-        "products": "Produkte",
+        "products": "Produkty",
         "titles": {
-            "list": "Produkte",
-            "create": "Produkt erstellen",
-            "edit": "Prod Düzenle"
+            "list": "Produkty",
+            "create": "Utwórz Produkt",
+            "edit": "Edytuj Produkt"
         },
         "fields": {
             "id": "ID",
-            "name": "Titel",
-            "description": "Bezeichnung",
-            "isActive": "Aktiv",
-            "price": "Price",
-            "category": "Kategorie",
+            "name": "Nazwa",
+            "description": "Opis",
+            "isActive": "Aktywny",
+            "price": "Cena",
+            "category": "Kategoria",
             "images": {
-                "label": "Fotos",
-                "description": "Ein Foto hochladen.",
-                "validation": "Fotoauflösung: 1080x1080px."
+                "label": "Obrazy",
+                "description": "Dodaj zdjęcie produktu",
+                "validation": "musi mieć 1080x1080 px"
             },
-            "createdAt": "Erstellt am"
+            "createdAt": "Utworzono"
         }
     },
     "reviews": {
-        "reviews": "Kommentare",
+        "reviews": "Recenzje",
         "titles": {
-            "list": "Kommentare"
+            "list": "Recenzje"
         },
         "fields": {
-            "user": "Benutzer",
-            "orderId": "Bestellungsnummer",
-            "review": "Kommentar",
-            "rating": "Bewertung"
+            "user": "Użytkownik",
+            "orderId": "ID Zamówienia",
+            "review": "Recenzja",
+            "rating": "Ocena"
         }
     },
     "stores": {
-        "stores": "Geschäfte",
+        "stores": "Sklepy",
         "titles": {
-            "create": "Geschäft Erstellen",
-            "edit": "Geschäfts Bearbeiten",
-            "list": "Geschäfte",
-            "show": "Geschäft Zeigen"
+            "create": "Utwórz Sklep",
+            "edit": "Edytuj Sklep",
+            "list": "Sklepy",
+            "show": "Pokaż Sklep"
         },
         "fields": {
-            "id": "Geschäfts-ID",
-            "title": "Titel",
-            "isActive": "Aktiv",
-            "createdAt": "Erstellt am",
-            "address": "Adresse",
+            "id": "ID Sklepu",
+            "title": "Tytuł",
+            "isActive": "Aktywny",
+            "createdAt": "Utworzono",
+            "address": "Adres",
             "email": "Email",
             "gsm": "Telefon"
         },
         "buttons": {
-            "editProducts": "Produkte bearbeiten",
-            "addProduct": "Produkt erstellen",
-            "outOfStock": "Kein Bestand",
-            "edit": "Produkt bearbeiten"
+            "editProducts": "Edytuj Produkty",
+            "addProduct": "Dodaj Produkt",
+            "outOfStock": "Brak w Magazynie",
+            "edit": "Edytuj Produkt"
         },
-        "selectLocation": "Wähle einen Ort",
-        "storeProducts": "Produkte des Geschäftes",
-        "tagFilterDescription": "Filter mit Etiketten",
-        "all": "Alles",
-        "productSearch": "Produkt suchen"
+        "selectLocation": "Wybierz lokalizację sklepu na mapie",
+        "storeProducts": "Produkty Sklepu",
+        "tagFilterDescription": "Użyj tagów, aby filtrować wyszukiwanie",
+        "all": "Wszystkie",
+        "productSearch": "Wyszukiwanie Produktu"
     },
     "users": {
-        "users": "Benutzern",
+        "users": "Użytkownicy",
         "titles": {
-            "edit": "Benutzer bearbeiten",
-            "list": "Benutzern",
-            "show": "Benutzer Information"
+            "edit": "Edytuj Użytkownika",
+            "list": "Użytkownicy",
+            "show": "Szczegóły Użytkownika"
         },
         "fields": {
             "id": "ID",
             "avatar": {
                 "label": "Avatar",
-                "description": "Ein Foto hochladen"
+                "description": "Kliknij lub przeciągnij obrazek avatara do tego obszaru, aby przesłać."
             },
-            "firstName": "Vorname",
-            "lastName": "Nachname",
+            "firstName": "Imię",
+            "lastName": "Nazwisko",
             "gender": {
-                "label": "Geschlecht",
-                "Male": "Mann",
-                "Female": "Frau"
+                "label": "Płeć",
+                "Male": "Mężczyzna",
+                "Female": "Kobieta"
             },
-            "gsm": "GSM",
-            "createdAt": "Erstellt am",
+            "gsm": "Numer GSM",
+            "createdAt": "Utworzono",
             "isActive": {
-                "label": "Aktiv",
-                "true": "Ja",
-                "false": "Nein"
+                "label": "Czy Aktywny",
+                "true": "Tak",
+                "false": "Nie"
             }
         },
         "filter": {
-            "title": "Filter",
+            "title": "Filtry",
             "search": {
-                "label": "Suche",
-                "placeholder": "Vorname, Nachname, GSM..."
+                "label": "Szukaj",
+                "placeholder": "Imię, nazwisko, GSM, itp."
             },
             "createdAt": {
-                "label": "Erstellt am"
+                "label": "Utworzono"
             },
             "gender": {
-                "label": "Geschlecht",
-                "placeholder": "Geschlecht",
-                "male": "Mann",
-                "female": "Frau"
+                "label": "Płeć",
+                "placeholder": "Płeć",
+                "male": "Mężczyzna",
+                "female": "Kobieta"
             },
             "isActive": {
-                "label": "Ist aktiv?",
-                "placeholder": "Ist aktiv?",
-                "true": "Ja",
-                "false": "Nein"
+                "label": "Aktywny",
+                "placeholder": "Status aktywności",
+                "true": "Tak",
+                "false": "Nie"
             },
-            "submit": "Filter"
+            "submit": "Filtruj"
         },
         "addresses": {
-            "addresses": "Adressen",
-            "address": "Adresse"
+            "addresses": "Adresy",
+            "address": "Adres"
         }
     }
 }

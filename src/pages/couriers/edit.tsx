@@ -27,6 +27,7 @@ import {
 import InputMask from "react-input-mask";
 
 import { ICourier, IStore } from "../../interfaces";
+import jsonServerDataProvider from "@refinedev/simple-rest";
 
 const { Text } = Typography;
 
@@ -41,7 +42,8 @@ export const CourierEdit: React.FC<IResourceComponentsProps> = () => {
         queryResult,
     } = useStepsForm<ICourier>();
     const courierData = queryResult?.data?.data;
-    const apiUrl = useApiUrl();
+    const apiUrl = "http://localhost:3000";
+    const dataProvider = jsonServerDataProvider(apiUrl);
 
     const { selectProps: storeSelectProps } = useSelect<IStore>({
         resource: "stores",

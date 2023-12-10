@@ -5,10 +5,8 @@ import {
     DailyRevenue,
     DailyOrders,
     NewCustomers,
-    DeliveryMap,
     OrderTimeline,
-    RecentOrders,
-    TrendingMenu,
+    RecentOrders, // Ensure that this is imported since it will now be used
 } from "../../components";
 
 const { Text } = Typography;
@@ -27,7 +25,7 @@ export const DashboardPage: React.FC = () => {
                                 paddingBottom: 0,
                             }}
                             style={{
-                                background: "url(images/daily-revenue.png)",
+                                background: "url(images/blank-page.png)",
                                 backgroundRepeat: "no-repeat",
                                 backgroundPosition: "right",
                                 backgroundSize: "cover",
@@ -43,7 +41,7 @@ export const DashboardPage: React.FC = () => {
                                 paddingBottom: 0,
                             }}
                             style={{
-                                background: "url(images/daily-order.png)",
+                                background: "url(images/blank-page.png)",
                                 backgroundRepeat: "no-repeat",
                                 backgroundPosition: "right",
                                 backgroundSize: "cover",
@@ -59,7 +57,7 @@ export const DashboardPage: React.FC = () => {
                                 paddingBottom: 0,
                             }}
                             style={{
-                                background: "url(images/new-orders.png)",
+                                background: "url(images/blank-page.png)",
                                 backgroundRepeat: "no-repeat",
                                 backgroundPosition: "right",
                                 backgroundSize: "cover",
@@ -73,25 +71,22 @@ export const DashboardPage: React.FC = () => {
             <Col xl={17} lg={16} md={24} sm={24} xs={24}>
                 <Card
                     bodyStyle={{
-                        height: 550,
                         padding: 0,
                     }}
                     title={
-                        <Text
-                            strong /* style={{ fontSize: 24, fontWeight: 800 }} */
-                        >
-                            {t("dashboard.deliveryMap.title")}
+                        <Text strong>
+                            {t("dashboard.recentOrders.title")}
                         </Text>
                     }
                 >
-                    <DeliveryMap />
+                    <RecentOrders />
                 </Card>
             </Col>
             <Col xl={7} lg={8} md={24} sm={24} xs={24}>
                 <Card
                     bodyStyle={{
-                        height: 550,
-                        overflowY: "scroll",
+                        height: '100%', // This will make sure the card tries to match the height of its parent
+                        overflowY: "scroll", // Only add this if you want a scrollbar
                     }}
                     title={
                         <Text strong style={{ textTransform: "capitalize" }}>
@@ -102,24 +97,7 @@ export const DashboardPage: React.FC = () => {
                     <OrderTimeline />
                 </Card>
             </Col>
-            <Col xl={17} lg={16} md={24} sm={24} xs={24}>
-                <Card
-                    title={
-                        <Text strong>{t("dashboard.recentOrders.title")}</Text>
-                    }
-                >
-                    <RecentOrders />
-                </Card>
-            </Col>
-            <Col xl={7} lg={8} md={24} sm={24} xs={24}>
-                <Card
-                    title={
-                        <Text strong>{t("dashboard.trendingMenus.title")}</Text>
-                    }
-                >
-                    <TrendingMenu />
-                </Card>
-            </Col>
+            {/* Removed the Col that contained TrendingMenu */}
         </Row>
     );
 };

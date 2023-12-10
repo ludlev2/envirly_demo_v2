@@ -27,6 +27,7 @@ import {
 import InputMask from "react-input-mask";
 
 import { ICourier, IStore } from "../../interfaces";
+import jsonServerDataProvider from "@refinedev/simple-rest";
 
 const { Text } = Typography;
 
@@ -40,7 +41,8 @@ export const CourierCreate: React.FC<IResourceComponentsProps> = () => {
         saveButtonProps,
         queryResult,
     } = useStepsForm<ICourier>();
-    const apiUrl = useApiUrl();
+    const API_URL = "http://localhost:3000";
+    const dataProvider = jsonServerDataProvider(API_URL);
 
     const { selectProps: storeSelectProps } = useSelect<IStore>({
         resource: "stores",
@@ -59,7 +61,7 @@ export const CourierCreate: React.FC<IResourceComponentsProps> = () => {
                         >
                             <Upload.Dragger
                                 name="file"
-                                action={`${apiUrl}/media/upload`}
+                                action={`${API_URL}/media/upload`}
                                 listType="picture"
                                 maxCount={1}
                                 multiple

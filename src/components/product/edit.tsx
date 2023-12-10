@@ -18,6 +18,7 @@ import {
 } from "antd";
 
 import { ICategory } from "../../interfaces";
+import jsonServerDataProvider from "@refinedev/simple-rest";
 
 const { Text } = Typography;
 
@@ -35,7 +36,8 @@ export const EditProduct: React.FC<EditProductProps> = ({
     editId,
 }) => {
     const t = useTranslate();
-    const apiUrl = useApiUrl();
+    const API_URL = "http://localhost:3000";
+    const dataProvider = jsonServerDataProvider(API_URL);
     const breakpoint = Grid.useBreakpoint();
 
     const { selectProps: categorySelectProps } = useSelect<ICategory>({
@@ -76,7 +78,7 @@ export const EditProduct: React.FC<EditProductProps> = ({
                         >
                             <Upload.Dragger
                                 name="file"
-                                action={`${apiUrl}/media/upload`}
+                                action={`${API_URL}/media/upload`}
                                 listType="picture"
                                 maxCount={1}
                                 accept=".png"

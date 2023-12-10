@@ -5,6 +5,7 @@ import { Typography } from "antd";
 import { Line } from "@ant-design/charts";
 import { LineConfig } from "@ant-design/plots/lib/components/line";
 import dayjs, { Dayjs } from "dayjs";
+import jsonServerDataProvider from "@refinedev/simple-rest";
 
 import { IncreaseIcon, DecreaseIcon } from "../../../components/icons";
 
@@ -19,7 +20,8 @@ import {
 
 export const DailyRevenue: React.FC = () => {
     const t = useTranslate();
-    const API_URL = useApiUrl();
+    const API_URL = "http://localhost:3000";
+    const dataProvider = jsonServerDataProvider(API_URL);
 
     const [dateRange, setDateRange] = useState<[Dayjs, Dayjs]>([
         dayjs().subtract(7, "days").startOf("day"),

@@ -1,8 +1,9 @@
 import { useMemo } from "react";
-import { useApiUrl, useCustom, useTranslate } from "@refinedev/core";
+import { useUrl, useCustom, useTranslate } from "@refinedev/core";
 import { ConfigProvider, theme, Typography } from "antd";
 import { Column } from "@ant-design/charts";
 import { ColumnConfig } from "@ant-design/plots/lib/components/column";
+import jsonServerDataProvider from "@refinedev/simple-rest";
 
 import { IncreaseIcon, DecreaseIcon } from "../../../components/icons";
 
@@ -11,7 +12,8 @@ import { Header, HeaderNumbers, NewCustomersWrapper } from "./styled";
 
 export const NewCustomers: React.FC = () => {
     const t = useTranslate();
-    const API_URL = useApiUrl();
+    const API_URL = "http://localhost:3000";
+    const dataProvider = jsonServerDataProvider(API_URL);
 
     const url = `${API_URL}/newCustomers`;
     const { data, isLoading } = useCustom<{

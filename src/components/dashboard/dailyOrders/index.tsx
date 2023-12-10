@@ -3,6 +3,7 @@ import { useApiUrl, useCustom, useTranslate } from "@refinedev/core";
 import { Typography } from "antd";
 import { Column } from "@ant-design/charts";
 import { ColumnConfig } from "@ant-design/plots/lib/components/column";
+import jsonServerDataProvider from "@refinedev/simple-rest";
 
 import { IncreaseIcon, DecreaseIcon } from "../../../components/icons";
 
@@ -11,7 +12,8 @@ import { DailyOrderWrapper, TitleAreNumber, TitleArea } from "./styled";
 
 export const DailyOrders: React.FC = () => {
     const t = useTranslate();
-    const API_URL = useApiUrl();
+    const API_URL = "http://localhost:3000";
+    const dataProvider = jsonServerDataProvider(API_URL);
 
     const url = `${API_URL}/dailyOrders`;
     const { data, isLoading } = useCustom<{
