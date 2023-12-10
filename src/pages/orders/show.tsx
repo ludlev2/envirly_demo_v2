@@ -1,51 +1,29 @@
-import { ReactNode } from "react";
-import {
-    useShow,
-    IResourceComponentsProps,
-    useTranslate,
-    useUpdate,
-} from "@refinedev/core";
+import { ReactNode, useState } from "react";
+import {useShow, IResourceComponentsProps, useTranslate, useUpdate,} from "@refinedev/core";
 import { List } from "@refinedev/antd";
-import {
-    CheckCircleOutlined,
-    CloseCircleOutlined,
-    LoadingOutlined,
-    MobileOutlined,
-} from "@ant-design/icons";
-import {
-    Row,
-    Col,
-    Button,
-    Steps,
-    Grid,
-    Space,
-    Avatar,
-    Typography,
-    Card,
-    Table,
-    Skeleton,
-} from "antd";
+import { CheckCircleOutlined, CloseCircleOutlined,LoadingOutlined,} from "@ant-design/icons";
+import { Row, Col, Button, Steps, Grid, Space, Avatar, Typography, Card, Table, Skeleton, Flex} from "antd";
 import dayjs from "dayjs";
-
-import { Map, MapMarker } from "../../components";
-import { BikeWhiteIcon } from "../../components/icons";
+import { StatusButton } from "../../components/statusButton";
 import { useOrderCustomKbarActions } from "../../hooks";
-import { IEvent, IOrder, IProduct } from "../../interfaces";
+import { IEvent, IOrder } from "../../interfaces";
 
-import {
-    Courier,
-    CourierBoxContainer,
-    CourierInfoBox,
-    CourierInfoBoxText,
-    CourierInfoText,
-    PageHeader,
-    Product,
-    ProductFooter,
-    ProductText,
-} from "./styled";
+import { Courier, CourierBoxContainer, CourierInfoBox, CourierInfoBoxText, CourierInfoText, PageHeader, } from "./styled";
 
 const { useBreakpoint } = Grid;
 const { Text } = Typography;
+
+
+const pdfUrl = "/images/invoices/invoice_2.pdf";
+
+const renderPdf = () => {
+    return (
+        <div style={{ height: "500px", width: "100%" }}>
+            <iframe type="application/pdf"  src={pdfUrl} frameBorder="0"  title="PDF Document"
+                width="100%"
+                height="100%"/> </div>
+    );
+}
 
 export const OrderShow: React.FC<IResourceComponentsProps> = () => {
     const t = useTranslate();
@@ -58,8 +36,7 @@ export const OrderShow: React.FC<IResourceComponentsProps> = () => {
     const canAcceptOrder = record?.status.text === "Pending Approval";
     const canRejectOrder =
         record?.status.text === "Pending Approval" ||
-        record?.status.text === "Approved" ||
-        record?.status.text === "Overdue";
+        record?.status.text === "Approved"
 
     const currentBreakPoints = Object.entries(screens)
         .filter((screen) => !!screen[1])
@@ -174,130 +151,47 @@ export const OrderShow: React.FC<IResourceComponentsProps> = () => {
 
     const renderCourierInfo = () => (
         <Card>
-            <Row justify="center">
-                <Col xl={12} lg={10}>
-                    <Courier>
-                        <Avatar
-                            size={108}
-                            src={record?.courier.avatar[0].url}
-                        />
-                        <CourierInfoText>
-                            <Text style={{ fontSize: 16 }}>COURIER</Text>
-                            <Text
-                                style={{
-                                    fontSize: 22,
-                                    fontWeight: 800,
-                                }}
-                            >
-                                {record?.courier.name} {record?.courier.surname}
-                            </Text>
-                            <Text>ID #{record?.courier.id}</Text>
-                        </CourierInfoText>
-                    </Courier>
-                </Col>
-
-                <CourierBoxContainer xl={12} lg={14} md={24}>
-                    {courierInfoBox(
-                        t("orders.courier.phone"),
-                        <MobileOutlined
-                            style={{ color: "#ffff", fontSize: 32 }}
-                        />,
-                        record?.courier.gsm,
-                    )}
-                    {courierInfoBox(
-                        t("orders.courier.deliveryTime"),
-                        <BikeWhiteIcon
-                            style={{ color: "#ffff", fontSize: 32 }}
-                        />,
-                        "15:05",
-                    )}
-                </CourierBoxContainer>
-            </Row>
-        </Card>
-    );
-
-    const renderDeliverables = () => (
-        <List
-            headerProps={{ style: { marginTop: 20 } }}
-            title={
-                <Text style={{ fontSize: 22, fontWeight: 800 }}>
-                    {t("orders.deliverables.deliverables")}
-                </Text>
-            }
-        >
-            <Table
-                pagination={false}
-                dataSource={record?.products}
-                footer={(_data) => (
-                    <ProductFooter>
-                        <Text>{t("orders.deliverables.mainTotal")}</Text>
-                        <Text>{record?.amount}$</Text>
-                    </ProductFooter>
-                )}
-            >
-                <Table.Column<IProduct>
-                    defaultSortOrder="descend"
-                    sorter={(a: IProduct, b: IProduct) =>
-                        a.name > b.name ? 1 : -1
-                    }
-                    dataIndex="name"
-                    title={t("orders.deliverables.fields.items")}
-                    render={(value, record) => (
-                        <Product>
+            {record?.courier.map((courier, index) => (
+                <Row justify="center" key={index}>
+                    <Col xl={12} lg={10}>
+                        <Courier>
                             <Avatar
-                                size={{
-                                    md: 60,
-                                    lg: 108,
-                                    xl: 108,
-                                    xxl: 108,
-                                }}
-                                src={record.images[0].url}
+                                size={108}
+                                src={courier.avatar && courier.avatar[0].url} // Assuming avatar is an array
                             />
-                            <ProductText>
-                                <Text style={{ fontSize: 22, fontWeight: 800 }}>
-                                    {value}
+                            <CourierInfoText>
+                                <Text style={{ fontSize: 16 }}>COURIER</Text>
+                                <Text
+                                    style={{
+                                        fontSize: 22,
+                                        fontWeight: 800,
+                                    }}
+                                >
+                                    {courier.name} {courier.surname}
                                 </Text>
-                                <Text>#{record.id}</Text>
-                            </ProductText>
-                        </Product>
-                    )}
-                />
-                <Table.Column
-                    title={t("orders.deliverables.fields.quantity")}
-                    dataIndex="quantity"
-                    render={() => (
-                        <Text style={{ fontWeight: 800 }}>{"1x"}</Text>
-                    )}
-                />
-                <Table.Column
-                    defaultSortOrder="descend"
-                    sorter={(a: IProduct, b: IProduct) => a.price - b.price}
-                    dataIndex="price"
-                    title={t("orders.deliverables.fields.price")}
-                    render={(value) => (
-                        <Text style={{ fontWeight: 800 }}>{value}</Text>
-                    )}
-                />
-                <Table.Column
-                    defaultSortOrder="descend"
-                    sorter={(a: IProduct, b: IProduct) => a.price - b.price}
-                    dataIndex="price"
-                    title={t("orders.deliverables.fields.total")}
-                    render={(value) => (
-                        <Text style={{ fontWeight: 800 }}>{value}</Text>
-                    )}
-                />
-            </Table>
-        </List>
+                                <Text>ID #{courier.id}</Text>
+                            </CourierInfoText>
+                        </Courier>
+                    </Col>
+
+                    <CourierBoxContainer xl={12} lg={14} md={24}>
+                        <StatusButton text={courier.approval_status} />  
+                        <Button >
+                            Send Reminder
+                        </Button>
+                        <Button danger>Delete</Button>
+
+                    </CourierBoxContainer>
+                </Row>
+            ))}
+        </Card>
     );
 
     return (
         <>
             <Space size={20} direction="vertical" style={{ width: "100%" }}>
                 {renderOrderSteps()}
-                <div style={{ height: "500px", width: "100%" }}>
-                    
-                </div>
+                {renderPdf()}
                 {renderCourierInfo()}
             </Space>
            {/*} {renderDeliverables()} */}

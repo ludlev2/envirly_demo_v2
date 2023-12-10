@@ -100,6 +100,8 @@ export interface IOrder {
     events: IEvent[];
     orderNumber: number;
     amount: number;
+    couriers: ICourier[];
+
 }
 
 export interface IProduct {
