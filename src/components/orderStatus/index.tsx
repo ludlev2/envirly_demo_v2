@@ -2,7 +2,7 @@ import { useTranslate } from "@refinedev/core";
 import { Tag } from "antd";
 
 type OrderStatusProps = {
-    status: "Pending" | "Ready" | "On The Way" | "Delivered" | "Cancelled";
+    status: "Pending Approval" | "Approved" | "Overdue" | "Paid" | "Cancelled";
 };
 
 export const OrderStatus: React.FC<OrderStatusProps> = ({ status }) => {
@@ -10,17 +10,17 @@ export const OrderStatus: React.FC<OrderStatusProps> = ({ status }) => {
     let color;
 
     switch (status) {
-        case "Pending":
+        case "Pending Approval":
             color = "orange";
             break;
-        case "Ready":
+        case "Approved":
             color = "cyan";
             break;
-        case "On The Way":
-            color = "green";
-            break;
-        case "Delivered":
+        case "Overdue":
             color = "blue";
+            break;
+        case "Paid":
+            color = "green";
             break;
         case "Cancelled":
             color = "red";

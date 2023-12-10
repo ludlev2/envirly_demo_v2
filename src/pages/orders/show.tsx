@@ -55,11 +55,11 @@ export const OrderShow: React.FC<IResourceComponentsProps> = () => {
     const { mutate } = useUpdate();
     const record = data?.data;
 
-    const canAcceptOrder = record?.status.text === "Pending";
+    const canAcceptOrder = record?.status.text === "Pending Approval";
     const canRejectOrder =
-        record?.status.text === "Pending" ||
-        record?.status.text === "Ready" ||
-        record?.status.text === "On The Way";
+        record?.status.text === "Pending Approval" ||
+        record?.status.text === "Approved" ||
+        record?.status.text === "Overdue";
 
     const currentBreakPoints = Object.entries(screens)
         .filter((screen) => !!screen[1])
@@ -68,7 +68,7 @@ export const OrderShow: React.FC<IResourceComponentsProps> = () => {
     const renderOrderSteps = () => {
         const notFinishedCurrentStep = (event: IEvent, index: number) =>
             event.status !== "Cancelled" &&
-            event.status !== "Delivered" &&
+            event.status !== "Paid" &&
             record?.events.findIndex(
                 (el) => el.status === record?.status?.text,
             ) === index;
@@ -109,7 +109,7 @@ export const OrderShow: React.FC<IResourceComponentsProps> = () => {
                         onClick={() =>
                             handleMutate({
                                 id: 2,
-                                text: "Ready",
+                                text: "Approved",
                             })
                         }
                     >
@@ -296,42 +296,11 @@ export const OrderShow: React.FC<IResourceComponentsProps> = () => {
             <Space size={20} direction="vertical" style={{ width: "100%" }}>
                 {renderOrderSteps()}
                 <div style={{ height: "500px", width: "100%" }}>
-                    <Map
-                        center={{
-                            lat: 40.73061,
-                            lng: -73.935242,
-                        }}
-                        zoom={9}
-                    >
-                        <MapMarker
-                            key={`user-marker-${record?.user.id}`}
-                            icon={{
-                                url: "/images/marker-location.svg",
-                            }}
-                            position={{
-                                lat: Number(record?.adress.coordinate[0]),
-                                lng: Number(record?.adress.coordinate[1]),
-                            }}
-                        />
-                        <MapMarker
-                            key={`user-marker-${record?.user.id}`}
-                            icon={{
-                                url: "/images/marker-courier.svg",
-                            }}
-                            position={{
-                                lat: Number(
-                                    record?.store.address.coordinate[0],
-                                ),
-                                lng: Number(
-                                    record?.store.address.coordinate[1],
-                                ),
-                            }}
-                        />
-                    </Map>
+                    
                 </div>
                 {renderCourierInfo()}
             </Space>
-            {renderDeliverables()}
+           {/*} {renderDeliverables()} */}
         </>
     );
 };

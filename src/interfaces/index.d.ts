@@ -4,10 +4,10 @@ export interface IOrderChart {
     count: number;
     status:
         | "waiting"
-        | "ready"
-        | "on the way"
-        | "delivered"
-        | "could not be delivered";
+        | "approved"
+        | "overdue"
+        | "paid"
+        | "could not be paid";
 }
 
 export interface IOrderTotalCount {
@@ -23,7 +23,7 @@ export interface ISalesChart {
 
 export interface IOrderStatus {
     id: number;
-    text: "Pending" | "Ready" | "On The Way" | "Delivered" | "Cancelled";
+    text: "Pending Approval" | "Approved" | "Overdue" | "Paid" | "Cancelled";
 }
 
 export interface IUser {

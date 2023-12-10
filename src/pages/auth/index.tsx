@@ -1,10 +1,12 @@
 import { AuthPage as AntdAuthPage, AuthProps } from "@refinedev/antd";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 
 const authWrapperProps = {
     style: {
         background:
-            "radial-gradient(50% 50% at 50% 50%,rgba(255, 255, 255, 0) 0%,rgba(0, 0, 0, 0.5) 100%),url('images/login-bg.png')",
+            "url('images/login_gradient.avif')",
         backgroundSize: "cover",
     },
 };
@@ -20,7 +22,7 @@ const renderAuthContent = (content: React.ReactNode) => {
             <Link to="/">
                 <img
                     style={{ marginBottom: 26 }}
-                    src="/images/fine-foods-login.svg"
+                    src="/images/web3found.png"
                     alt="Logo"
                     width="100%"
                 />
@@ -30,13 +32,19 @@ const renderAuthContent = (content: React.ReactNode) => {
     );
 };
 
-export const AuthPage: React.FC<AuthProps> = ({ type, formProps }) => {
+export const AuthPage: React.FC<AuthProps & { onSuccess?: () => void }> = ({ type, formProps, onSuccess }) => {
+
+
+    // You need to pass handleSubmit to your form's onSubmit or equivalent form submission handler
+    // ...
     return (
         <AntdAuthPage
             type={type}
             wrapperProps={authWrapperProps}
             renderContent={renderAuthContent}
-            formProps={formProps}
+            formProps={{
+                ...formProps
+            }}
         />
     );
 };

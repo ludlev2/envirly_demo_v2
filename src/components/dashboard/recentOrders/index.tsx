@@ -30,7 +30,7 @@ export const RecentOrders: React.FC = () => {
             {
                 field: "status.text",
                 operator: "eq",
-                value: "Pending",
+                value: "Pending Approval",
             },
         ],
         syncWithLocation: false,

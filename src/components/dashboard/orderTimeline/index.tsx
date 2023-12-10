@@ -59,19 +59,19 @@ export const OrderTimeline: React.FC = () => {
                 return {
                     indicatorColor: "cyan",
                     backgroundColor: "#e6fffb",
-                    text: "ready",
+                    text: "approved",
                 };
             case "3":
                 return {
                     indicatorColor: "green",
                     backgroundColor: "#e6f7ff",
-                    text: "on the way",
+                    text: "overdue",
                 };
             case "4":
                 return {
                     indicatorColor: "blue",
                     backgroundColor: "#e6fffb",
-                    text: "delivered",
+                    text: "paid",
                 };
             case "5":
                 return {

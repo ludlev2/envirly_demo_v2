@@ -8,9 +8,9 @@ export const OffLayoutArea = () => {
         <ToggleContainer>
             <RefineKbar />
             <LeftOutlined />
-            <a href="https://example.refine.dev">
-                Switch to <br />
-                <strong>CLIENT APP</strong>
+            <a href="https://en.wikipedia.org/wiki/Dirty_Hungarian_Phrasebook">
+                Hi there, Levi here <br />
+                <strong>%SYSTEM-F-GAMEOVER</strong>
             </a>
         </ToggleContainer>
     );

@@ -29,7 +29,7 @@ export const OrderActions: React.FC<OrderActionProps> = ({ record }) => {
                     alignItems: "center",
                     fontWeight: 500,
                 }}
-                disabled={record.status.text !== "Pending"}
+                disabled={record.status.text !== "Pending Approval"}
                 icon={
                     <CheckCircleOutlined
                         style={{
@@ -46,7 +46,7 @@ export const OrderActions: React.FC<OrderActionProps> = ({ record }) => {
                         values: {
                             status: {
                                 id: 2,
-                                text: "Ready",
+                                text: "Approved",
                             },
                         },
                     });
@@ -71,7 +71,7 @@ export const OrderActions: React.FC<OrderActionProps> = ({ record }) => {
                     />
                 }
                 disabled={
-                    record.status.text === "Delivered" ||
+                    record.status.text === "Paid" ||
                     record.status.text === "Cancelled"
                 }
                 onClick={() =>

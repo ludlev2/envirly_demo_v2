@@ -206,7 +206,7 @@ export const UserShow: React.FC<IResourceComponentsProps> = () => {
                                                 )}
                                             </ul>
                                         }
-                                        title="Products"
+                                        title="Payment Terms"
                                         trigger="hover"
                                     >
                                         {t("orders.fields.itemsAmount", {

@@ -157,7 +157,7 @@
             "gsm": "Phone",
             "email": "E-Mail",
             "address": "Address",
-            "createdAt": "CreatedAt",
+            "createdAt": "Date",
             "isActive": "Is Active",
             "images": {
                 "label": "Images",
@@ -197,9 +197,9 @@
             "title": "Timeline",
             "orderStatuses": {
                 "pending": "Preparing order",
-                "ready": "Order is ready",
-                "on the way": "Order is on the way",
-                "delivered": "Order is delivered",
+                "approved": "Order is approved",
+                "overdue": "Order is overdue",
+                "paid": "Order is paid",
                 "cancelled": "Order is cancelled"
             }
         },
@@ -212,10 +212,10 @@
     },
     "enum": {
         "orderStatuses": {
-            "Pending": "Pending",
-            "Ready": "Ready",
-            "On The Way": "On the way",
-            "Delivered": "Delivered",
+            "Pending Approval": "Pending Approval",
+            "Approved": "Approved",
+            "Overdue": "Overdue",
+            "Paid": "Paid",
             "Cancelled": "Cancelled"
         }
     },
@@ -226,13 +226,13 @@
             "show": "Show Order"
         },
         "fields": {
-            "orderNumber": "Order Number",
+            "orderNumber": "Invoice Number",
             "orderID": "Order ID",
             "status": "Status",
-            "store": "Store",
-            "user": "User",
-            "products": "Products",
-            "createdAt": "CreatedAt",
+            "store": "Company",
+            "user": "People to approve",
+            "products": "Payment Terms",
+            "createdAt": "Date",
             "amount": "Amount",
             "itemsAmount": "{{amount}} items"
         },
@@ -293,7 +293,7 @@
                 "description": "Add product picture",
                 "validation": "must be 1080x1080 px"
             },
-            "createdAt": "CreatedAt"
+            "createdAt": "Date"
         }
     },
     "reviews": {
@@ -320,7 +320,7 @@
             "id": "Store ID",
             "title": "Title",
             "isActive": "Active",
-            "createdAt": "CreatedAt",
+            "createdAt": "Date",
             "address": "Address",
             "email": "Email",
             "gsm": "Phone"
@@ -358,7 +358,7 @@
                 "Female": "Female"
             },
             "gsm": "Gsm Number",
-            "createdAt": "CreatedAt",
+            "createdAt": "Date",
             "isActive": {
                 "label": "Is Active",
                 "true": "Yes",

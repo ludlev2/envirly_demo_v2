@@ -14,11 +14,11 @@ export const useOrderCustomKbarActions = (order?: IOrder): void => {
     const t = useTranslate();
     const { mutate } = useUpdate();
 
-    const canAcceptOrder = order?.status.text === "Pending";
+    const canAcceptOrder = order?.status.text === "Pending Approval";
     const canRejectOrder =
-        order?.status.text === "Pending" ||
-        order?.status.text === "Ready" ||
-        order?.status.text === "On The Way";
+        order?.status.text === "Pending Approval" ||
+        order?.status.text === "Approved" ||
+        order?.status.text === "Overdue";
 
     const [actions, setActions] = useState<Action[]>([]);
 
@@ -50,7 +50,7 @@ export const useOrderCustomKbarActions = (order?: IOrder): void => {
                     perform: () => {
                         handleMutate({
                             id: 2,
-                            text: "Ready",
+                            text: "Approved",
                         });
                     },
                     priority: Priority.HIGH,

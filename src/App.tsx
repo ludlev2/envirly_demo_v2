@@ -28,6 +28,7 @@ import "dayjs/locale/de";
 import { DashboardPage } from "./pages/dashboard";
 import { OrderList, OrderShow } from "./pages/orders";
 import { AuthPage } from "./pages/auth";
+import { Welcome } from './pages/welcome';
 import { UserList, UserShow } from "./pages/users";
 import {
     CourierList,
@@ -146,6 +147,8 @@ const App: React.FC = () => {
                         ]}
                     >
                         <Routes>
+                            <Route path="/welcome" element={<Welcome />} />
+
                             <Route
                                 element={
                                     <Authenticated
@@ -243,7 +246,7 @@ const App: React.FC = () => {
                                             type="login"
                                             formProps={{
                                                 initialValues: {
-                                                    email: "demo@refine.dev",
+                                                    email: "luca@web3.foundation",
                                                     password: "demodemo",
                                                 },
                                             }}
@@ -257,13 +260,14 @@ const App: React.FC = () => {
                                             type="register"
                                             formProps={{
                                                 initialValues: {
-                                                    email: "demo@refine.dev",
+                                                    email: "luca@web3.foundation",
                                                     password: "demodemo",
                                                 },
                                             }}
                                         />
                                     }
                                 />
+
                                 <Route
                                     path="/forgot-password"
                                     element={<AuthPage type="forgotPassword" />}

@@ -11,7 +11,7 @@ export const DeliveryMap: React.FC = () => {
                 {
                     field: "status.text",
                     operator: "eq",
-                    value: "On The Way",
+                    value: "Overdue",
                 },
             ],
             pagination: {

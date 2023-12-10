@@ -197,9 +197,9 @@
             "title": "Oś czasu",
             "orderStatuses": {
                 "pending": "Przygotowanie zamówienia",
-                "ready": "Zamówienie gotowe",
-                "on the way": "Zamówienie w drodze",
-                "delivered": "Zamówienie dostarczone",
+                "approved": "Zamówienie gotowe",
+                "overdue": "Zamówienie w drodze",
+                "paid": "Zamówienie dostarczone",
                 "cancelled": "Zamówienie anulowane"
             }
         },
@@ -212,10 +212,10 @@
     },
     "enum": {
         "orderStatuses": {
-            "Pending": "Oczekujące",
-            "Ready": "Gotowe",
-            "On The Way": "W drodze",
-            "Delivered": "Dostarczone",
+            "Pending Approval": "Oczekujące",
+            "Approved": "Gotowe",
+            "Overdue": "W drodze",
+            "Paid": "Dostarczone",
             "Cancelled": "Anulowane"
         }
     },

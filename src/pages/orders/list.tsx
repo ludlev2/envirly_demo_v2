@@ -225,7 +225,7 @@ export const OrderList: React.FC<IResourceComponentsProps> = () => {
                                             ))}
                                         </ul>
                                     }
-                                    title="Products"
+                                    title="Payment terms"
                                     trigger="hover"
                                 >
                                     {t("orders.fields.itemsAmount", {
