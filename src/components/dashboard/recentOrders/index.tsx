@@ -50,10 +50,12 @@ export const RecentOrders: React.FC = () => {
                 render={(_, record) => (
                     <Avatar
                         size={{
-                            xs: 60,
-                            lg: 108,
-                            xl: 132,
-                            xxl: 144,
+                            xs: 24,  // extra small screens
+                            sm: 32,  // small screens
+                            md: 40,  // medium screens
+                            lg: 64,  // large screens
+                            xl: 80,  // extra large screens
+                            xxl: 96, // extra extra large screens
                         }}
                         src={record?.products[0]?.images[0].url}
                     />
