@@ -179,7 +179,7 @@
             "title": "Delivery Map"
         },
         "orders": {
-            "title": "Orders"
+            "title": "Payables"
         },
         "totalSales": {
             "title": "Total Sales"
@@ -188,13 +188,13 @@
             "title": "Daily Revenue"
         },
         "dailyOrders": {
-            "title": "Daily Orders"
+            "title": "Account Payables"
         },
         "newCustomers": {
             "title": "New Customers"
         },
         "timeline": {
-            "title": "Timeline",
+            "title": "Insights",
             "orderStatuses": {
                 "pending": "Preparing order",
                 "approved": "Order is approved",
@@ -204,7 +204,7 @@
             }
         },
         "recentOrders": {
-            "title": "Recent Orders"
+            "title": "Current Grants"
         },
         "trendingMenus": {
             "title": "Daily Trending Menus"
@@ -213,6 +213,7 @@
     "enum": {
         "orderStatuses": {
             "Pending Approval": "Pending Approval",
+            "Grant" : "Grant",
             "Approved": "Approved",
             "Overdue": "Overdue",
             "Paid": "Paid",
@@ -220,9 +221,9 @@
         }
     },
     "orders": {
-        "orders": "Orders",
+        "orders": "Payables",
         "titles": {
-            "list": "Orders",
+            "list": "Payables",
             "show": "Show Order"
         },
         "fields": {

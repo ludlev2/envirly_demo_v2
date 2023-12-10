@@ -6,7 +6,8 @@ import {
     DailyOrders,
     NewCustomers,
     OrderTimeline,
-    RecentOrders, // Ensure that this is imported since it will now be used
+    RecentOrders,
+    ChatBotComponent, // Ensure that this is imported since it will now be used
 } from "../../components";
 
 const { Text } = Typography;
@@ -83,21 +84,19 @@ export const DashboardPage: React.FC = () => {
                 </Card>
             </Col>
             <Col xl={7} lg={8} md={24} sm={24} xs={24}>
-                <Card
-                    bodyStyle={{
+                <Card bodyStyle={{
                         height: '100%', // This will make sure the card tries to match the height of its parent
                         overflowY: "scroll", // Only add this if you want a scrollbar
                     }}
                     title={
                         <Text strong style={{ textTransform: "capitalize" }}>
                             {t("dashboard.timeline.title")}
-                        </Text>
-                    }
-                >
-                    <OrderTimeline />
+                        </Text>}>
+                    <ChatBotComponent style = {{width: "100%"}}/>
+
                 </Card>
             </Col>
-            {/* Removed the Col that contained TrendingMenu */}
+           
         </Row>
     );
 };
