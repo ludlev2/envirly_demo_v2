@@ -140,6 +140,9 @@ export const OrderShow: React.FC<IResourceComponentsProps> = () => {
 
     const renderCourierInfo = () => (
         <Card>
+            <Button type="primary" style={{ marginBottom: 20 }}>
+                Add Approver
+            </Button>
             {record?.courier.map((courier, index) => (
                 <Row justify="center" key={index}>
                     <Col xl={12} lg={10}>
