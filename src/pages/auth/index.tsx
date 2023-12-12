@@ -1,6 +1,5 @@
 import { AuthPage as AntdAuthPage, AuthProps } from "@refinedev/antd";
-import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { Link} from "react-router-dom";
 
 
 const authWrapperProps = {
@@ -19,7 +18,7 @@ const renderAuthContent = (content: React.ReactNode) => {
                 margin: "auto",
             }}
         >
-            <Link to="/">
+            <Link to="/welcome">
                 <img
                     style={{ marginBottom: 26 }}
                     src="/images/web3found.png"
@@ -34,7 +33,7 @@ const renderAuthContent = (content: React.ReactNode) => {
 
 export const AuthPage: React.FC<AuthProps & { onSuccess?: () => void }> = ({ type, formProps, onSuccess }) => {
 
-
+   
     // You need to pass handleSubmit to your form's onSubmit or equivalent form submission handler
     // ...
     return (

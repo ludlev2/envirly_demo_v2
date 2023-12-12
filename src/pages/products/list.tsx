@@ -54,7 +54,7 @@ export const ProductList: React.FC<IResourceComponentsProps> = () => {
         show: createShow,
     } = useDrawerForm<IProduct>({
         action: "create",
-        resource: "products",
+        resource: "grants",
         redirect: false,
     });
 
@@ -66,7 +66,7 @@ export const ProductList: React.FC<IResourceComponentsProps> = () => {
         id: editId,
     } = useDrawerForm<IProduct>({
         action: "edit",
-        resource: "products",
+        resource: "grants",
         redirect: false,
     });
 
@@ -95,7 +95,7 @@ export const ProductList: React.FC<IResourceComponentsProps> = () => {
                             }}
                         >
                             <Text style={{ fontSize: "24px" }} strong>
-                                {t("products.products")}
+                                {t("grants.products")}
                             </Text>
                             <Form.Item name="name" noStyle>
                                 <Input

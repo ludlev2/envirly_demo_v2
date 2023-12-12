@@ -47,6 +47,7 @@ import { ConfigProvider } from "./context";
 import { useAutoLoginForDemo } from "./hooks";
 
 import "@refinedev/antd/dist/reset.css";
+import { GrantManagement } from "./pages/grantManagement/show";
 
 const App: React.FC = () => {
     // This hook is used to automatically login the user.
@@ -99,55 +100,14 @@ const App: React.FC = () => {
                                     icon: <ShoppingOutlined />,
                                 },
                             },
-                            {
-                                name: "users",
-                                list: "/users",
-                                show: "/users/show/:id",
-                                meta: {
-                                    icon: <UsergroupAddOutlined />,
-                                },
-                            },
-                            {
-                                name: "products",
-                                list: "/products",
-                                meta: {
-                                    icon: <PizzaIcon />,
-                                },
-                            },
-                            {
-                                name: "stores",
-                                list: "/stores",
-                                create: "/stores/create",
-                                edit: "/stores/edit/:id",
-                                meta: {
-                                    icon: <ShopOutlined />,
-                                },
-                            },
-                            {
-                                name: "categories",
-                                list: "/categories",
-                            },
-                            {
-                                name: "couriers",
-                                list: "/couriers",
-                                create: "/couriers/create",
-                                edit: "/couriers/edit/:id",
-                                show: "/couriers/show/:id",
-                                meta: {
-                                    icon: <BikeWhiteIcon />,
-                                },
-                            },
-                            {
-                                name: "reviews",
-                                list: "/reviews",
-                                meta: {
-                                    icon: <StarOutlined />,
-                                },
-                            },
+                            
+                           
+                           
                         ]}
                     >
                         <Routes>
                             <Route path="/welcome" element={<Welcome />} />
+                            <Route path="/grantManagement" element={<GrantManagement />} />
 
                             <Route
                                 element={

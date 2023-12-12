@@ -1,0 +1,27 @@
+{"products":
+{
+    "id": 1,
+    "name": "Big King",
+    "isActive": true,
+    "description": "The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+    "images": [
+        {
+            "url": "https://images.unsplash.com/photo-1534352436920-f658b50b73fe?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTk5fHxmb29kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "name": "823301ab-c4cf-4bde-8c1c-d639a9b310c3",
+            "status": "done",
+            "type": "image/jpeg",
+            "uid": "d22ec9e7-6fb3-4c4f-b914-13c640e54e07"
+        }
+    ],
+    "createdAt": "2023-06-29T12:08:00.168Z",
+    "price": 932,
+    "category": {
+        "id": 9
+    }
+}
+
+
+
+
+
+}

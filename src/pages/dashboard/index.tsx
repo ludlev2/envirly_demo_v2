@@ -1,102 +1,73 @@
 import { Row, Col, Card, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-
+import {GrantsList} from "../../components/grants";
+import {RecentGrants} from "../../components/dashboard/recentGrants";
 import {
     DailyRevenue,
     DailyOrders,
     NewCustomers,
     OrderTimeline,
     RecentOrders,
-    ChatBotComponent, // Ensure that this is imported since it will now be used
+    ChatBotComponent,
+     // Ensure that this is imported since it will now be used
+
 } from "../../components";
+import LineChart from "../../components/chart/LineChart";
+
+
+import {useState} from "react";
+import { IOrder } from "../../interfaces";
 
 const { Text } = Typography;
 
 export const DashboardPage: React.FC = () => {
     const { t } = useTranslation();
+    const [selectedOrderEvents, setSelectedOrderEvents] = useState<IOrder['events']>([]);
+
+    // Function to handle when an order is selected
+    const handleOrderSelect = (order: IOrder) => {
+        setSelectedOrderEvents(order.events); // Update the selected order's events
+    };
 
     return (
         <Row gutter={[16, 16]}>
-            <Col md={24}>
+            <Col span={24}> {/* This will ensure the content spans the full width */}
                 <Row gutter={[16, 16]}>
-                    <Col xl={10} lg={24} md={24} sm={24} xs={24}>
+                    <Col span={24}>
                         <Card
                             bodyStyle={{
                                 padding: 10,
                                 paddingBottom: 0,
                             }}
-                            style={{
-                                background: "url(images/blank-page.png)",
-                                backgroundRepeat: "no-repeat",
-                                backgroundPosition: "right",
-                                backgroundSize: "cover",
-                            }}
+                           // style={{
+                           //     background: "url(images/blank-page.png)",
+                           //     backgroundRepeat: "no-repeat",
+                           //     backgroundPosition: "right",
+                           //     backgroundSize: "cover",
+                           // }}
                         >
-                            <DailyRevenue />
+                            <LineChart />
                         </Card>
                     </Col>
-                    <Col xl={7} lg={12} md={24} sm={24} xs={24}>
+                    
+                </Row>
+                <Row gutter={[16, 16]}>
+                    <Col span={24}> {/* Full width for RecentOrders */}
                         <Card
                             bodyStyle={{
-                                padding: 10,
-                                paddingBottom: 0,
+                                padding: 0,
                             }}
-                            style={{
-                                background: "url(images/blank-page.png)",
-                                backgroundRepeat: "no-repeat",
-                                backgroundPosition: "right",
-                                backgroundSize: "cover",
-                            }}
+                            title={
+                                <Text strong>
+                                    {t("dashboard.recentOrders.title")}
+                                </Text>
+                            }
                         >
-                            <DailyOrders />
-                        </Card>
-                    </Col>
-                    <Col xl={7} lg={12} md={24} sm={24} xs={24}>
-                        <Card
-                            bodyStyle={{
-                                padding: 10,
-                                paddingBottom: 0,
-                            }}
-                            style={{
-                                background: "url(images/blank-page.png)",
-                                backgroundRepeat: "no-repeat",
-                                backgroundPosition: "right",
-                                backgroundSize: "cover",
-                            }}
-                        >
-                            <NewCustomers />
+                            <RecentOrders />
                         </Card>
                     </Col>
                 </Row>
             </Col>
-            <Col xl={17} lg={16} md={24} sm={24} xs={24}>
-                <Card
-                    bodyStyle={{
-                        padding: 0,
-                    }}
-                    title={
-                        <Text strong>
-                            {t("dashboard.recentOrders.title")}
-                        </Text>
-                    }
-                >
-                    <RecentOrders />
-                </Card>
-            </Col>
-            <Col xl={7} lg={8} md={24} sm={24} xs={24}>
-                <Card bodyStyle={{
-                        height: '100%', // This will make sure the card tries to match the height of its parent
-                        overflowY: "scroll", // Only add this if you want a scrollbar
-                    }}
-                    title={
-                        <Text strong style={{ textTransform: "capitalize" }}>
-                            {t("dashboard.timeline.title")}
-                        </Text>}>
-                    <ChatBotComponent style = {{width: "100%"}}/>
-
-                </Card>
-            </Col>
-           
         </Row>
     );
-};
+ }

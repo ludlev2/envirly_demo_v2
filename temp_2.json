@@ -1,0 +1,50 @@
+{
+ "grants" :{
+    "id": 1,
+    "name" : "TeenCrunch",
+    "isActive": true,
+    "description": "Egy, egy almafa",
+    "images": [
+        {
+            "url": "https://images.unsplash.com/photo-1534352436920-f658b50b73fe?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTk5fHxmb29kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "name": "823301ab-c4cf-4bde-8c1c-d639a9b310c3",
+            "status": "done",
+            "type": "image/jpeg",
+            "uid": "d22ec9e7-6fb3-4c4f-b914-13c640e54e07"
+        }
+    ],
+    "createdAt": "2023-06-29T12:08:00.168Z",
+    "price": 10.000,
+    "category": {
+        "id": "DOT"
+    },
+    "events": [
+        {
+            "date": "2023-12-02T10:33:02.820Z",
+            "status": "MileStone#1"
+        },
+        {
+            "date": "2023-12-02T10:34:02.820Z",
+            "status": "MileStone#2"
+        },
+        {
+            "date": "2023-12-02T10:36:02.820Z",
+            "status": "MileStone#3"
+        },
+        {
+            "date": "2023-12-02T10:39:02.820Z",
+            "status": "MileStone#4"
+        }
+    ],
+    "orderNumber": 365302,
+    "gitAnalytics": [
+        {
+            "url": "https://images.unsplash.com/photo-1534352436920-f658b50b73fe?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTk5fHxmb29kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "name": "823301ab-c4cf-4bde-8c1c-d639a9b310c3",
+            "status": "done",
+            "type": "image/jpeg",
+            "uid": "d22ec9e7-6fb3-4c4f-b914-13c640e54e07"
+        }
+    ]
+}
+}

@@ -4,5 +4,6 @@ export * from "./dailyOrders";
 export * from "./newCustomers";
 export * from "./orderTimeline";
 export * from "./trendingMenu";
+export * from "./recentGrants";
 export * from "./recentOrders";
 export * from "./chatBot";

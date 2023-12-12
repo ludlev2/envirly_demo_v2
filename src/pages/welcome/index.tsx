@@ -1,16 +1,18 @@
 import React, { lazy, Suspense, useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Spin, Button, notification } from 'antd';
+import { IGrantigate, useLocation, useNavigate } from 'react-router-dom';
+import { Spin, Button, notification, Radio, Typography } from 'antd';
 import { CheckCircleOutlined, CheckCircleTwoTone } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import quickbooksLogo from '~/images/qb_logo.png';
-import amexLogo from '~/images/amex.jpg';
+import amexLogo from '~/images/credit_suisse.png';
+
 
 interface StyleProps {
     style: React.CSSProperties;
 }
 const ConfettiComponent = lazy(() => import("./confetti"));
 
+const { Title } = Typography;
 
 const welcomeWrapperProps: StyleProps = {
     style: {
@@ -37,7 +39,7 @@ const welcomeTextStyle: React.CSSProperties = {
 const whiteBoxStyle: React.CSSProperties = {
     maxWidth: '450px', // Narrowed the width a bit
     width: '100%', // Make sure it doesn't exceed the viewport width
-    minHeight: '400px', // Increased minimum height
+    minHeight: '300px', // Increased minimum height
     backgroundColor: '#fff',
     padding: '40px', // Same padding
     borderRadius: '12px', // Same border radius
@@ -116,8 +118,8 @@ export const Welcome: React.FC = () => {
                 setBanksLoading(false);
                 notification.success({ message: 'Connected to Banks!' });
                 // Redirect to the root route after 2 seconds
-                setTimeout(() => navigate('/'), 2000);
-            }, 2000);
+                setTimeout(() => navigate('/'), 1000);
+            }, 1000);
         }
     };
 
@@ -127,7 +129,8 @@ export const Welcome: React.FC = () => {
     };
     const buttonStyle: React.CSSProperties = {
         width: '200px', // Keep the width as before
-        fontSize: '18px', // Increased font size for larger buttons
+        height: '80px', // Increase height to make buttons taller
+        fontSize: '32px', // Increased font size for larger buttons
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -135,7 +138,7 @@ export const Welcome: React.FC = () => {
     };
 
     const iconStyle: React.CSSProperties = {
-        marginRight: '8px', // Add space between icon and text
+        marginRight: '10px', // Add space between icon and text
     };
 
     const statusIconStyle: React.CSSProperties = {
@@ -151,10 +154,13 @@ export const Welcome: React.FC = () => {
                 icon={<img src={quickbooksLogo} alt="QuickBooks" style={logoStyle} />}
                 disabled={quickBooksClicked}
                 style={{ flexGrow: 1 }} // Ensure button takes full width
+                block // Ant Design property to make the button display block (full width)
             >
                 Connect QuickBooks
             </Button>
-            {quickBooksClicked ? (quickBooksLoading ? <Spin /> : <CheckCircleOutlined style={{ color: 'green' }} />) : <CheckCircleTwoTone twoToneColor="#d9d9d9" style={statusIconStyle} />}
+            {quickBooksClicked && (
+                quickBooksLoading ? <Spin /> : <CheckCircleOutlined style={{ color: 'green', marginLeft: 8 }} />
+            )}
         </div>
     );
 
@@ -165,21 +171,24 @@ export const Welcome: React.FC = () => {
                 icon={<img src={amexLogo} alt="American Express" style={logoStyle} />}
                 disabled={banksClicked}
                 style={{ flexGrow: 1 }} // Ensure button takes full width
+                block // Ant Design property to make the button display block (full width)
             >
                 Connect Banks
             </Button>
-            {banksClicked ? (banksLoading ? <Spin /> : <CheckCircleOutlined style={{ color: 'green' }} />) : <CheckCircleTwoTone twoToneColor="#d9d9d9" style={statusIconStyle} />}
+            {banksClicked && (
+                banksLoading ? <Spin /> : <CheckCircleOutlined style={{ color: 'green', marginLeft: 8 }} />
+            )}
         </div>
     );
 
     return (
         
         <div style={welcomeWrapperProps.style}>
-            <Suspense >
+           {/* <Suspense >
                 {showConfetti && <ConfettiComponent />}
-            </Suspense>
+            </Suspense> */}
             <div style={whiteBoxStyle}>
-                <h1 style={welcomeTextStyle}>Welcome, Luca!</h1>
+                <Title>Welcome, Luca!</Title>
 
                 {quickBooksButton}
                 {banksButton}

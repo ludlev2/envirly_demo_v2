@@ -10,13 +10,7 @@ import jsonServerDataProvider from "@refinedev/simple-rest";
 import { IncreaseIcon, DecreaseIcon } from "../../../components/icons";
 
 import { ISalesChart } from "../../../interfaces";
-import {
-    DailyRevenueWrapper,
-    TitleAreNumber,
-    TitleArea,
-    TitleAreaAmount,
-    RangePicker,
-} from "./styled";
+import { DailyRevenueWrapper, TitleAreNumber, TitleArea, TitleAreaAmount, RangePicker,} from "./styled";
 
 export const DailyRevenue: React.FC = () => {
     const t = useTranslate();
@@ -42,10 +36,7 @@ export const DailyRevenue: React.FC = () => {
     }>({
         url,
         method: "get",
-        config: {
-            query,
-        },
-    });
+        config: { query,}, });
 
     const config = useMemo(() => {
         const config: LineConfig = {

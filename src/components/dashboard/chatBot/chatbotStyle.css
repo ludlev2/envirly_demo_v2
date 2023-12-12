@@ -1,4 +1,7 @@
+/* customChatbotStyles.css */
 .react-chatbot-kit-chat-container {
-    width: 1000px;
-    /* or any other width */
+    width: 90%;
+    /* or any other width you prefer */
+    max-width: 500px;
+    /* you can also use a fixed width like 500px */
 }

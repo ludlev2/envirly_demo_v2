@@ -1,8 +1,7 @@
 import { useTranslate, useNavigation } from "@refinedev/core";
 import { useSimpleList } from "@refinedev/antd";
-import {
-    Typography,
-    List as AntdList,
+import {Typography,
+ List as AntdList,
     Tooltip,
     ConfigProvider,
     theme,

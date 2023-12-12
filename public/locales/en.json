@@ -194,7 +194,7 @@
             "title": "New Customers"
         },
         "timeline": {
-            "title": "Insights",
+            "title": "Timeline",
             "orderStatuses": {
                 "pending": "Preparing order",
                 "approved": "Order is approved",

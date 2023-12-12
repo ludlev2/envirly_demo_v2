@@ -1,8 +1,8 @@
-import { useState } from "react";
 import { useNavigation, useTranslate } from "@refinedev/core";
 import { useTable } from "@refinedev/antd";
-import { Typography, Table, Avatar, Space, Tag, Modal } from "antd";
-import { RecentOrdersColumn, Price,
+import { Typography, Table, Avatar, Space, Tag } from "antd";
+import {
+    RecentOrdersColumn, Price,
     OrderId,
     Title,
     TitleWrapper,
@@ -10,16 +10,14 @@ import { RecentOrdersColumn, Price,
 
 import { OrderActions } from "../../../components";
 
-import { IGrant } from "../../../interfaces";
-
-import { GrantTimeline } from  "../grantTimeline";
+import { IOrder } from "../../../interfaces";
 
 const { Text, Paragraph } = Typography;
 
-export const RecentOrders: React.FC = () => {
+export const RecentGrants: React.FC = () => {
     const t = useTranslate();
-    const { tableProps } = useTable<IGrant>({
-        resource: "grants",
+    const { tableProps } = useTable<IOrder>({
+        resource: "orders",
         initialSorter: [
             {
                 field: "createdAt",
@@ -27,34 +25,26 @@ export const RecentOrders: React.FC = () => {
             },
         ],
         initialPageSize: 4,
-       
+        permanentFilter: [
+            {
+                field: "status.text",
+                operator: "eq",
+                value: "Pending",
+            },
+        ],
         syncWithLocation: false,
     });
 
     const { show } = useNavigation();
 
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [selectedOrder, setSelectedOrder] = useState<IGrant | null>(null);
-
-    const showModal = (record: IGrant) => {
-        setSelectedOrder(record);
-        setIsModalVisible(true);
-    };
-
-    const handleCancel = () => {
-        setIsModalVisible(false);
-    };
-
     return (
-        <>
         <Table
             {...tableProps}
             pagination={{ ...tableProps.pagination, simple: true }}
             showHeader={false}
             rowKey="id"
-            
         >
-            <Table.Column<IGrant>
+            <Table.Column<IOrder>
                 key="avatar"
                 render={(_, record) => (
                     <Avatar
@@ -66,7 +56,7 @@ export const RecentOrders: React.FC = () => {
                             xl: 80,  // extra large screens
                             xxl: 96, // extra extra large screens
                         }}
-                        src={record?.products?.images.url}
+                        src={record?.products[0]?.images[0].url}
                     />
                 )}
             />
@@ -80,14 +70,16 @@ export const RecentOrders: React.FC = () => {
                                 rows: 2,
                                 tooltip: record.products[0]?.description,
                                 symbol: <span>...</span>,
-                              }}
+                            }}
                         >
                             {record.products[0]?.description}
                         </Paragraph>
 
                         <OrderId
                             strong
-                            onClick={() => showModal(record)}
+                            onClick={() => {
+                                show("orders", record.id);
+                            }}
                         >
                             #{record.orderNumber}
                         </OrderId>
@@ -105,7 +97,7 @@ export const RecentOrders: React.FC = () => {
                     </Space>
                 )}
             />
-            <Table.Column<IGrant>
+            <Table.Column<IOrder>
                 dataIndex="amount"
                 render={(value, record) => (
                     <Space
@@ -130,24 +122,12 @@ export const RecentOrders: React.FC = () => {
                     </Space>
                 )}
             />
-            <Table.Column<IGrant>
+            <Table.Column<IOrder>
                 fixed="right"
                 key="actions"
                 align="center"
                 render={(_, record) => <OrderActions record={record} />}
             />
         </Table>
-            <Modal
-                title="Order Details"
-                visible={isModalVisible}
-                onCancel={handleCancel}
-                footer={null} // You can add buttons here if needed
-            >
-                {/* Render your selected order details here */}
-                {selectedOrder && (
-                    <GrantTimeline events={selectedOrder.events} />
-                )}
-            </Modal>
-        </>
     );
 };

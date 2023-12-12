@@ -19,6 +19,7 @@ export interface ISalesChart {
     date: string;
     title: "Order Count" | "Order Amount";
     value: number;
+    value_2: number;
 }
 
 export interface IOrderStatus {
@@ -104,12 +105,60 @@ export interface IOrder {
 
 }
 
+export interface IGrant {
+    id: number;
+    user: IUser;
+    createdAt: string;
+    products: IProduct;
+    status: IOrderStatus;
+    adress: IAddress;
+    store: IStore;
+    courier: ICourier;
+    events: IEvent[];
+    orderNumber: number;
+    amount: number;
+    couriers: ICourier;
+
+}
+
+export interface IGrantImage {
+    url: string;
+    name: string;
+    status: string;
+    type: string;
+    uid: string;
+}
+
+export interface IGrantCategory {
+    id: string;
+}
+
+export interface IGrantEvent {
+    date: string;
+    status: string;
+}
+
+export interface IGrant {
+    id: number;
+    name: string;
+    isActive: boolean;
+    description: string;
+    images: IGrantImage[];
+    createdAt: string;
+    price: number;
+    category: IGrantCategory;
+    events: IGrantEvent[];
+    orderNumber: number;
+    gitAnalytics: IGrantImage[]; // Assuming gitAnalytics has the same structure as images
+}
+
+
 export interface IProduct {
     id: number;
     name: string;
     isActive: boolean;
     description: string;
-    images: IFile[];
+    images: IFile;
     createdAt: string;
     price: number;
     category: ICategory;
@@ -152,6 +201,7 @@ export interface ICourier {
 export interface IReview {
     id: number;
     order: IOrder;
+    grant: IGrant;
     user: IUser;
     star: number;
     createDate: string;
