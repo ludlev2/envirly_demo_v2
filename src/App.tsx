@@ -1,5 +1,5 @@
 import React from "react";
-import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
+import { Authenticated, Refine } from "@refinedev/core";
 import { RefineKbarProvider } from "@refinedev/kbar";
 import {
     notificationProvider,
@@ -15,9 +15,6 @@ import routerProvider, {
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import {
     ShoppingOutlined,
-    UsergroupAddOutlined,
-    ShopOutlined,
-    StarOutlined,
     DashboardOutlined,
 } from "@ant-design/icons";
 import jsonServerDataProvider from "@refinedev/simple-rest";
@@ -29,25 +26,12 @@ import { DashboardPage } from "./pages/dashboard";
 import { OrderList, OrderShow } from "./pages/orders";
 import { AuthPage } from "./pages/auth";
 import { Welcome } from './pages/welcome';
-import { UserList, UserShow } from "./pages/users";
-import {
-    CourierList,
-    CourierShow,
-    CourierCreate,
-    CourierEdit,
-} from "./pages/couriers";
-import { ProductList } from "./pages/products";
-import { StoreCreate, StoreEdit, StoreList } from "./pages/stores";
-import { CategoryList } from "./pages/categories";
-import { ReviewsList } from "./pages/reviews";
 import { useTranslation } from "react-i18next";
 import { Header, Title, OffLayoutArea } from "./components";
-import { BikeWhiteIcon, PizzaIcon } from "./components/icons";
 import { ConfigProvider } from "./context";
 import { useAutoLoginForDemo } from "./hooks";
 
 import "@refinedev/antd/dist/reset.css";
-import { GrantManagement } from "./pages/grantManagement/show";
 
 const App: React.FC = () => {
     // This hook is used to automatically login the user.
@@ -107,8 +91,9 @@ const App: React.FC = () => {
                     >
                         <Routes>
                             <Route path="/welcome" element={<Welcome />} />
+                            {/*
                             <Route path="/grantManagement" element={<GrantManagement />} />
-
+                            */}
                             <Route
                                 element={
                                     <Authenticated
@@ -136,7 +121,7 @@ const App: React.FC = () => {
                                         element={<OrderShow />}
                                     />
                                 </Route>
-
+                                {/*
                                 <Route path="/users">
                                     <Route index element={<UserList />} />
                                     <Route
@@ -144,12 +129,14 @@ const App: React.FC = () => {
                                         element={<UserShow />}
                                     />
                                 </Route>
-
+                                */}
+                                {/*
                                 <Route
                                     path="/products"
                                     element={<ProductList />}
                                 />
-
+                                */}
+                                {/*
                                 <Route path="/stores">
                                     <Route index element={<StoreList />} />
                                     <Route
@@ -161,12 +148,16 @@ const App: React.FC = () => {
                                         element={<StoreEdit />}
                                     />
                                 </Route>
+                                */}
 
+                                {/*
                                 <Route
                                     path="/categories"
                                     element={<CategoryList />}
                                 />
+                                */}
 
+                                {/*
                                 <Route path="/couriers">
                                     <Route index element={<CourierList />} />
                                     <Route
@@ -182,13 +173,14 @@ const App: React.FC = () => {
                                         element={<CourierShow />}
                                     />
                                 </Route>
-
+                                
                                 <Route
                                     path="/reviews"
                                     element={<ReviewsList />}
                                 />
+                                */}
                             </Route>
-
+                                
                             <Route
                                 element={
                                     <Authenticated

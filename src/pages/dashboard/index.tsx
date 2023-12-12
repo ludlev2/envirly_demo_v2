@@ -1,16 +1,9 @@
 import { Row, Col, Card, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-import {GrantsList} from "../../components/grants";
-import {RecentGrants} from "../../components/dashboard/recentGrants";
 import {
-    DailyRevenue,
-    DailyOrders,
-    NewCustomers,
-    OrderTimeline,
-    RecentOrders,
-    ChatBotComponent,
+   
+ RecentOrders,
      // Ensure that this is imported since it will now be used
-
 } from "../../components";
 import LineChart from "../../components/chart/LineChart";
 

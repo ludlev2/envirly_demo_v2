@@ -66,21 +66,25 @@ export const RecentOrders: React.FC = () => {
                             xl: 80,  // extra large screens
                             xxl: 96, // extra extra large screens
                         }}
-                        src={record?.products?.images.url}
+                        src={record?.products?.images.url} 
+                        onClick={() => showModal(record)}
                     />
                 )}
             />
             <RecentOrdersColumn
                 key="summary"
                 render={(_, record) => (
-                    <TitleWrapper>
-                        <Title strong>{record.products[0]?.name}</Title>
+                    <TitleWrapper >
+                        <Title strong
+                            onClick={() => showModal(record)}>{record.products[0]?.name}</Title>
                         <Paragraph
                             ellipsis={{
                                 rows: 2,
                                 tooltip: record.products[0]?.description,
                                 symbol: <span>...</span>,
-                              }}
+                              }} 
+                            strong
+                            onClick={() => showModal(record)}
                         >
                             {record.products[0]?.description}
                         </Paragraph>
@@ -100,7 +104,8 @@ export const RecentOrders: React.FC = () => {
                     <Space direction="vertical">
                         <Title
                             strong
-                        >{`${record.courier.name} ${record.courier.surname}`}</Title>
+                            onClick={() => showModal(record)} 
+                        >{`${record.courier.name} ${record.courier.surname}`} </Title>
                         <Text>{record.adress.text}</Text>
                     </Space>
                 )}
@@ -122,7 +127,7 @@ export const RecentOrders: React.FC = () => {
                                 style: "currency",
                                 notation: "standard",
                             }}
-                            value={value / 100}
+                            value={value * 100}
                         />
                         <Tag color="orange">
                             {t(`enum.orderStatuses.${record.status.text}`)}
