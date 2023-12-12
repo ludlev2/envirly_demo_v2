@@ -164,11 +164,14 @@ export const OrderShow: React.FC<IResourceComponentsProps> = () => {
                     </Col>
 
                     <CourierBoxContainer xl={12} lg={14} md={24}>
+                        <Space direction="horizontal" size={20}>
                         <StatusButton text={courier.approval_status} />  
                         <Button >
                             Send Reminder
                         </Button>
+                       
                         <Button danger>Delete</Button>
+                        </Space>
 
                     </CourierBoxContainer>
                 </Row>

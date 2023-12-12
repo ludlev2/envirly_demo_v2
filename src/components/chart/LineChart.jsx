@@ -10,6 +10,18 @@ function LineChart() {
   
   const [series, setSeries] = useState(lineChart.series);
 
+  const calculateDifference = () => {
+    const outflowsSeries = series.find(s => s.name === "Outflows");
+    const inflowsSeries = series.find(s => s.name === "Inflows");
+
+    if (outflowsSeries && inflowsSeries) {
+      const outflowsLastValue = outflowsSeries.data[outflowsSeries.data.length - 1];
+      const inflowsLastValue = inflowsSeries.data[inflowsSeries.data.length - 1];
+      return inflowsLastValue - outflowsLastValue;
+    }
+
+    return 0;
+  };
 
   const handleChange = (value) => {
     switch (value) {
@@ -81,17 +93,17 @@ function LineChart() {
     }
   };
 
+  const netCashFlow = calculateDifference();
+
+
   return (
     <>
       <div className="linechart">
         <div>
           
 
-          <Title level={3}>Net cash flow $72,103</Title>
-          <Paragraph className="lastweek">
-            <span className="bnb2">+30%</span> this month
-          </Paragraph>
-          
+          <Title level={3}>Net cash flow ${netCashFlow}k</Title>
+         
   
         </div>
         

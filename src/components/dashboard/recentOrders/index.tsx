@@ -6,6 +6,8 @@ import { RecentOrdersColumn, Price,
     OrderId,
     Title,
     TitleWrapper,
+    Paragraph
+
 } from "./styled";
 
 import { OrderActions } from "../../../components";
@@ -14,7 +16,7 @@ import { IGrant } from "../../../interfaces";
 
 import { GrantTimeline } from  "../grantTimeline";
 
-const { Text, Paragraph } = Typography;
+const { Text } = Typography;
 
 export const RecentOrders: React.FC = () => {
     const t = useTranslate();

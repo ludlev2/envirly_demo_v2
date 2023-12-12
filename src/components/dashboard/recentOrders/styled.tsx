@@ -15,16 +15,21 @@ export const TitleWrapper = styled.div`
 `;
 
 export const Title = styled(Typography.Text)`
-    font-size: 12px;
+    font-size: 16px;
+    word-break: inherit;
+`;
+
+export const Paragraph = styled(Typography.Paragraph)`
+    font-size: 30px;
     word-break: inherit;
 `;
 
 export const OrderId = styled(Typography.Text)`
     cursor: pointer;
-    font-size: 10px;
+    font-size: 12px;
 `;
 
 export const Price = styled(NumberField)`
     white-space: nowrap;
-    font-size: 12px;
+    font-size: 14px;
 `;
