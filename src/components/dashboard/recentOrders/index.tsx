@@ -127,9 +127,11 @@ export const RecentOrders: React.FC = () => {
                                 style: "currency",
                                 notation: "standard",
                             }}
-                            value={value * 100}
+                            value={value}
                         />
-                        <Tag color="orange">
+                        <Tag color={ record.status.text === "Live" ? "green"
+                                    : record.status.text === "Closed"? "red"
+                                     : "blue"}>
                             {t(`enum.orderStatuses.${record.status.text}`)}
                         </Tag>
                     </Space>

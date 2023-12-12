@@ -24,7 +24,7 @@ export interface ISalesChart {
 
 export interface IOrderStatus {
     id: number;
-    text: "Pending Approval" | "Approved" | "Overdue" | "Paid" | "Cancelled";
+    text: "Pending Approval" | "Approved" | "Overdue" | "Paid" | "Cancelled" | "Invoice Received" | "Due Date" | "Live" | "Closed" | "Ending Soon";
 }
 
 export interface IUser {
@@ -92,6 +92,8 @@ export interface ICourier {
 export interface IOrder {
     id: number;
     user: IUser;
+    paymentTerms: string;
+    dueDate: string;
     createdAt: string;
     products: IProduct[];
     status: IOrderStatus;

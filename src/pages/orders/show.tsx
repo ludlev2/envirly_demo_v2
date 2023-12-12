@@ -1,8 +1,8 @@
 import { ReactNode, useState } from "react";
 import {useShow, IResourceComponentsProps, useTranslate, useUpdate,} from "@refinedev/core";
 import { List } from "@refinedev/antd";
-import { CheckCircleOutlined, CloseCircleOutlined,LoadingOutlined,} from "@ant-design/icons";
-import { Row, Col, Button, Steps, Grid, Space, Avatar, Typography, Card, Table, Skeleton, Flex} from "antd";
+import { CheckCircleOutlined, CloseCircleOutlined,LoadingOutlined, SendOutlined} from "@ant-design/icons";
+import { Row, Col, Button, Steps, Grid, Space, Avatar, Typography, Card, Table, Skeleton, Modal} from "antd";
 import dayjs from "dayjs";
 import { StatusButton } from "../../components/statusButton";
 import { useOrderCustomKbarActions } from "../../hooks";
@@ -24,7 +24,6 @@ const renderPdf = () => {
                 height="100%"/> </div>
     );
 }
-
 export const OrderShow: React.FC<IResourceComponentsProps> = () => {
     const t = useTranslate();
     const screens = useBreakpoint();
@@ -33,10 +32,11 @@ export const OrderShow: React.FC<IResourceComponentsProps> = () => {
     const { mutate } = useUpdate();
     const record = data?.data;
 
-    const canAcceptOrder = record?.status.text === "Pending Approval";
+    const canAcceptOrder = record?.status.text === "Approved";
     const canRejectOrder =
         record?.status.text === "Pending Approval" ||
-        record?.status.text === "Approved"
+        record?.status.text === "Approved" ||
+        record?.status.text === "Invoice Received";
 
     const currentBreakPoints = Object.entries(screens)
         .filter((screen) => !!screen[1])
@@ -59,15 +59,34 @@ export const OrderShow: React.FC<IResourceComponentsProps> = () => {
 
         const handleMutate = (status: { id: number; text: string }) => {
             if (record) {
+
+                const newEvent = {
+                    "date": new Date().toISOString(),
+                    "status": status.text
+
+                };
+                const lastEvent = record.events[record.events.length - 1];
+                if (lastEvent && lastEvent.status === status.text) {
+                    // If the last event is the same as the one we're trying to add, only update the date
+                    lastEvent.date = newEvent.date;
+                } else {
+                    // Otherwise, add the new event to the events array
+                    record.events.push(newEvent);
+                }
+                
                 mutate({
                     resource: "orders",
                     id: record.id.toString(),
                     values: {
                         status,
+                        events: record.events,
                     },
                 });
             }
         };
+
+
+
 
         useOrderCustomKbarActions(record);
 
@@ -75,39 +94,19 @@ export const OrderShow: React.FC<IResourceComponentsProps> = () => {
             <PageHeader
                 ghost={false}
                 onBack={() => window.history.back()}
-                title={t("orders.fields.orderID")}
-                subTitle={`#${record?.orderNumber ?? ""}`}
+                title={`Due Date: ${record ? dayjs(record.dueDate).format('YYYY-MM-DD HH:mm:ss') : ""}`}
+                subTitle={`Invoice Number #${record?.orderNumber ?? ""}`}
                 extra={[
-                    <Button
-                        disabled={!canAcceptOrder}
-                        key="accept"
-                        icon={<CheckCircleOutlined />}
-                        type="primary"
+                    <Button disabled={!canAcceptOrder}  key="accept" icon={<SendOutlined />} type="primary"
                         onClick={() =>
                             handleMutate({
                                 id: 2,
-                                text: "Approved",
-                            })
-                        }
-                    >
-                        {t("buttons.accept")}
-                    </Button>,
-                    <Button
-                        disabled={!canRejectOrder}
-                        key="reject"
-                        danger
-                        icon={<CloseCircleOutlined />}
-                        onClick={() =>
-                            handleMutate({
+                                text: "Paid",})}> {t("buttons.accept")}  </Button>,
+                                
+                    <Button disabled={!canRejectOrder} key="reject" danger icon={< CloseCircleOutlined />}
+                        onClick={() => handleMutate({
                                 id: 5,
-                                text: "Cancelled",
-                            })
-                        }
-                    >
-                        {t("buttons.reject")}
-                    </Button>,
-                ]}
-            >
+                                text: "Cancelled", })} > {t("buttons.reject")} </Button>,]}>
                 <Steps
                     direction={
                         currentBreakPoints.includes("lg")
@@ -139,16 +138,6 @@ export const OrderShow: React.FC<IResourceComponentsProps> = () => {
         );
     };
 
-    const courierInfoBox = (text: string, icon: ReactNode, value?: string) => (
-        <CourierInfoBox>
-            {icon}
-            <CourierInfoBoxText>
-                <Text style={{ color: "#ffffff" }}>{text.toUpperCase()}</Text>
-                <Text style={{ color: "#ffffff" }}>{value}</Text>
-            </CourierInfoBoxText>
-        </CourierInfoBox>
-    );
-
     const renderCourierInfo = () => (
         <Card>
             {record?.courier.map((courier, index) => (
@@ -160,7 +149,7 @@ export const OrderShow: React.FC<IResourceComponentsProps> = () => {
                                 src={courier.avatar && courier.avatar[0].url} // Assuming avatar is an array
                             />
                             <CourierInfoText>
-                                <Text style={{ fontSize: 16 }}>COURIER</Text>
+                                <Text style={{ fontSize: 16 }}>{courier.title}</Text>
                                 <Text
                                     style={{
                                         fontSize: 22,
@@ -191,8 +180,8 @@ export const OrderShow: React.FC<IResourceComponentsProps> = () => {
         <>
             <Space size={20} direction="vertical" style={{ width: "100%" }}>
                 {renderOrderSteps()}
-                {renderPdf()}
                 {renderCourierInfo()}
+                {renderPdf()}
             </Space>
            {/*} {renderDeliverables()} */}
         </>

@@ -216,7 +216,11 @@
             "Approved": "Gotowe",
             "Overdue": "W drodze",
             "Paid": "Dostarczone",
-            "Cancelled": "Anulowane"
+            "Cancelled": "Anulowane",
+            "Invoice Received": "Faktura otrzymana",
+            "Grant": "Grant",
+            "Live": "Live",
+            "Due date": "Termin płatności"
         }
     },
     "orders": {
@@ -234,7 +238,7 @@
             "products": "Produkty",
             "createdAt": "Utworzono",
             "amount": "Kwota",
-            "itemsAmount": "{{amount}} przedmiotów"
+            "itemsAmount": "{{amount}}"
         },
         "filter": {
             "title": "Filtry",

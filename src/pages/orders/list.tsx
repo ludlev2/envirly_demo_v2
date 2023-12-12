@@ -196,7 +196,7 @@ export const OrderList: React.FC<IResourceComponentsProps> = () => {
                                             currency: "USD",
                                             style: "currency",
                                         }}
-                                        value={value / 100}
+                                        value={value}
                                     />
                                 );
                             }}
@@ -219,18 +219,14 @@ export const OrderList: React.FC<IResourceComponentsProps> = () => {
                                 <Popover
                                     content={
                                         <ul>
-                                            {record.products.map((product) => (
-                                                <li key={product.id}>
-                                                    {product.name}
-                                                </li>
-                                            ))}
+                                            {record?.paymentTerms}
                                         </ul>
                                     }
                                     title="Payment terms"
                                     trigger="hover"
                                 >
                                     {t("orders.fields.itemsAmount", {
-                                        amount: record.products.length,
+                                        amount: record?.paymentTerms,
                                     })}
                                 </Popover>
                             )}

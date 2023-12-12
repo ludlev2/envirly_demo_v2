@@ -45,25 +45,24 @@ export const GrantTimeline: React.FC = ({events}) => {
 
     const { Text } = Typography;
         // Function to map status string to color and background
-        const getStatusColor = status => {
-            switch (status.toLowerCase()) {
-                case 'pending approval':
-                    return { color: 'orange', backgroundColor: '#fff7e6' };
-                case 'approved':
-                    return { color: 'cyan', backgroundColor: '#e6fffb' };
-                case 'overdue':
-                    return { color: 'green', backgroundColor: '#e6f7ff' };
-                case 'paid':
-                    return { color: 'blue', backgroundColor: '#e6fffb' };
-                default:
-                    return { color: 'gray', backgroundColor: '#f5f5f5' };
+        const getStatusColor = (date) => {
+            const eventDate = new Date(date);
+            const today = new Date();
+
+
+            if (eventDate < today) {
+                return { color: 'green', backgroundColor: '#50F461' };
+            } else {
+                return { color: 'cyan', backgroundColor: '#e6f7ff' };
             }
+
+            
         };
 
         return (
             <Timeline>
                 {events.map(event => {
-                    const { color, backgroundColor } = getStatusColor(event.status);
+                    const { color, backgroundColor } = getStatusColor(event.date);
                     return (
                         <TimelineItem key={event.date} color={color}>
                             <TimelineContent backgroundColor={backgroundColor}>

@@ -105,7 +105,6 @@ const App: React.FC = () => {
                                         <ThemedLayoutV2
                                             Header={Header}
                                             Title={Title}
-                                            OffLayoutArea={OffLayoutArea}
                                         >
                                             <Outlet />
                                         </ThemedLayoutV2>
@@ -236,7 +235,6 @@ const App: React.FC = () => {
                                         <ThemedLayoutV2
                                             Header={Header}
                                             Title={Title}
-                                            OffLayoutArea={OffLayoutArea}
                                         >
                                             <Outlet />
                                         </ThemedLayoutV2>

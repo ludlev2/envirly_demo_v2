@@ -88,7 +88,7 @@
         "import": "Import",
         "export": "Export",
         "clone": "Clone",
-        "accept": "Accept",
+        "accept": "Send Transfer",
         "acceptAll": "Accept All",
         "reject": "Reject",
         "rejectAll": "Reject All",
@@ -212,11 +212,16 @@
     },
     "enum": {
         "orderStatuses": {
+            "Invoice Received": "Invoice Received",
             "Pending Approval": "Pending Approval",
             "Grant" : "Grant",
             "Approved": "Approved",
             "Overdue": "Overdue",
+            "Due Date": "Due Date",
             "Paid": "Paid",
+            "Closed": "Closed",
+            "Ending Soon": "Ending Soon",
+            "Live" : "Live",
             "Cancelled": "Cancelled"
         }
     },
@@ -228,14 +233,14 @@
         },
         "fields": {
             "orderNumber": "Invoice Number",
-            "orderID": "Order ID",
+            "orderID": "Invoce Number",
             "status": "Status",
             "store": "Company",
             "user": "People to approve",
             "products": "Payment Terms",
             "createdAt": "Date",
             "amount": "Amount",
-            "itemsAmount": "{{amount}} items"
+            "itemsAmount": "{{amount}}"
         },
         "filter": {
             "title": "Filters",
@@ -304,7 +309,7 @@
         },
         "fields": {
             "user": "User",
-            "orderId": "Order ID",
+            "orderId": "Invoice Number",
             "review": "Review",
             "rating": "Rating"
         }
