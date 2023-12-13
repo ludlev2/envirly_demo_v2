@@ -1,10 +1,15 @@
 import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { IGrantigate, useLocation, useNavigate } from 'react-router-dom';
+import { useTranslate } from "@refinedev/core";
+
+
 import { Spin, Button, notification, Radio, Typography } from 'antd';
 import { CheckCircleOutlined, CheckCircleTwoTone } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import quickbooksLogo from '~/images/qb_logo.png';
 import amexLogo from '~/images/credit_suisse.png';
+import bigQueryLogo from '~/images/big_query.svg';
+import anaplanLogo from '~/images/anaplan.png';
 
 
 interface StyleProps {
@@ -77,6 +82,9 @@ const renderWelcomeContent = ({ quickBooksButton, banksButton }: RenderWelcomeCo
 
 export const Welcome: React.FC = () => {
 
+    const t = useTranslate();
+
+
     const navigate = useNavigate();
     const location = useLocation();
     const [showConfetti, setShowConfetti] = useState(false);
@@ -99,24 +107,24 @@ export const Welcome: React.FC = () => {
         }
     }, [location]);
 
-    const handleQuickBooksConnect = (): void => {
+    const handleAnaplanConnect = (): void => {
         if (!quickBooksClicked) {
             setQuickBooksLoading(true);
             setQuickBooksClicked(true);
             setTimeout(() => {
                 setQuickBooksLoading(false);
-                notification.success({ message: 'Connected to QuickBooks!' });
+                notification.success({ message: 'Connected to Anaplan!' });
             }, 2000);
         }
     };
 
-    const handleBanksConnect = (): void => {
+    const handleBigQueryConnect = (): void => {
         if (!banksClicked) {
             setBanksLoading(true);
             setBanksClicked(true);
             setTimeout(() => {
                 setBanksLoading(false);
-                notification.success({ message: 'Connected to Banks!' });
+                notification.success({ message: 'Connected to Big Query!' });
                 // Redirect to the root route after 2 seconds
                 setTimeout(() => navigate('/'), 1000);
             }, 1000);
@@ -147,16 +155,16 @@ export const Welcome: React.FC = () => {
     };
 
 
-    const quickBooksButton: JSX.Element = (
+    const anaplanButton: JSX.Element = (
         <div style={buttonStyle}>
             <Button
-                onClick={handleQuickBooksConnect}
-                icon={<img src={quickbooksLogo} alt="QuickBooks" style={logoStyle} />}
+                onClick={handleAnaplanConnect}
+                icon={<img src={anaplanLogo} alt="QuickBooks" style={logoStyle} />}
                 disabled={quickBooksClicked}
                 style={{ flexGrow: 1 }} // Ensure button takes full width
                 block // Ant Design property to make the button display block (full width)
             >
-                Connect QuickBooks
+                Connect Anaplan
             </Button>
             {quickBooksClicked && (
                 quickBooksLoading ? <Spin /> : <CheckCircleOutlined style={{ color: 'green', marginLeft: 8 }} />
@@ -164,16 +172,16 @@ export const Welcome: React.FC = () => {
         </div>
     );
 
-    const banksButton: JSX.Element = (
+    const bigQueryButton: JSX.Element = (
         <div style={buttonStyle}>
             <Button
-                onClick={handleBanksConnect}
-                icon={<img src={amexLogo} alt="American Express" style={logoStyle} />}
+                onClick={handleBigQueryConnect}
+                icon={<img src={bigQueryLogo} alt="Big Query" style={logoStyle} />}
                 disabled={banksClicked}
                 style={{ flexGrow: 1 }} // Ensure button takes full width
                 block // Ant Design property to make the button display block (full width)
             >
-                Connect Banks
+                Connect Big Query
             </Button>
             {banksClicked && (
                 banksLoading ? <Spin /> : <CheckCircleOutlined style={{ color: 'green', marginLeft: 8 }} />
@@ -188,10 +196,10 @@ export const Welcome: React.FC = () => {
                 {showConfetti && <ConfettiComponent />}
             </Suspense> */}
             <div style={whiteBoxStyle}>
-                <Title>Welcome, Luca!</Title>
-
-                {quickBooksButton}
-                {banksButton}
+                <Title>Welcome, Barbara!</Title>
+            
+                {anaplanButton}
+                {bigQueryButton}
             </div>
         </div>
     );

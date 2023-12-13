@@ -233,14 +233,21 @@
         },
         "fields": {
             "orderNumber": "Invoice Number",
+            "journalEntry": "Journal Entry",
             "orderID": "Invoce Number",
-            "status": "Status",
+            "status": "Analytical Accounting",
             "store": "Company",
             "user": "People to approve",
             "products": "Payment Terms",
+            "credit": "Credit",
+            "debit": "Debit",
             "createdAt": "Date",
             "amount": "Amount",
-            "itemsAmount": "{{amount}}"
+            "itemsAmount": "{{amount}}",
+            "account": "Account",
+            "category": "Category",
+            "percent": "Percentage breakdown",
+            "value": "Value"
         },
         "filter": {
             "title": "Filters",

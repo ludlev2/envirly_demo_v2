@@ -73,6 +73,16 @@ export interface IStore {
     createdAt: string;
     address: IAddress;
     products: IProduct[];
+    description: string;
+}
+
+export interface IJournalEntry {
+    id: number;
+    title: string;
+    isActive: boolean;
+    createdAt: string;
+    address: IAddress;
+    products: IProduct[];
 }
 
 export interface ICourier {
@@ -104,6 +114,12 @@ export interface IOrder {
     orderNumber: number;
     amount: number;
     couriers: ICourier[];
+    statuses: IOrderStatus[];
+    credit: number;
+    debit: number;
+    account: IStore;
+    category: IUser;
+    journalEntry: IJournalEntry;
 
 }
 

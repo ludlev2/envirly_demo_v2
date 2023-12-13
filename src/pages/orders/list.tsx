@@ -1,49 +1,15 @@
-import { useMemo } from "react";
-import {
-    useTranslate,
-    IResourceComponentsProps,
-    CrudFilters,
-    useExport,
-    useNavigation,
-    HttpError,
-    getDefaultFilter,
-} from "@refinedev/core";
-
-import {
-    List,
-    TextField,
-    useTable,
-    getDefaultSortOrder,
-    DateField,
-    NumberField,
-    useSelect,
-    ExportButton,
-} from "@refinedev/antd";
+import { useMemo, useState } from "react";
+import { useTranslate, IResourceComponentsProps, CrudFilters, useExport,useNavigation, HttpError, getDefaultFilter, } from "@refinedev/core";
+import { List, TextField,  useTable,  getDefaultSortOrder,  DateField,  NumberField,  useSelect,  ExportButton,} from "@refinedev/antd";
 import { SearchOutlined } from "@ant-design/icons";
-import {
-    Table,
-    Popover,
-    Card,
-    Input,
-    Form,
-    DatePicker,
-    Select,
-    Button,
-    FormProps,
-    Row,
-    Col,
+import { Table, Popover, Card, Input, Form, DatePicker, Select, Button, FormProps, Row, Col, Tag, Space, Dropdown, message, Tooltip, Menu } from "antd";
+import { DownOutlined, UserOutlined } from '@ant-design/icons';
 
-} from "antd";
+import type { MenuProps } from 'antd';
 import dayjs from "dayjs";
 
 import { OrderStatus, OrderActions } from "../../components";
-import {
-    IOrder,
-    IStore,
-    IOrderFilterVariables,
-    IOrderStatus,
-    IUser,
-} from "../../interfaces";
+import {  IOrder,  IStore,  IOrderFilterVariables,  IOrderStatus,  IUser,} from "../../interfaces";
 
 const { RangePicker } = DatePicker;
 
@@ -102,8 +68,11 @@ export const OrderList: React.FC<IResourceComponentsProps> = () => {
         },
     });
 
+    
+
     const t = useTranslate();
     const { show } = useNavigation();
+
 
     const { isLoading, triggerExport } = useExport<IOrder>({
         sorter,
@@ -115,145 +84,266 @@ export const OrderList: React.FC<IResourceComponentsProps> = () => {
                 id: item.id,
                 amount: item.amount,
                 orderNumber: item.orderNumber,
-                status: item.status.text,
+                statuses: item.statuses.map(status => status.text).join(', '), // Join the statuses texts into a single string
                 store: item.store.title,
                 user: item.user.firstName,
             };
         },
     });
 
-    const Actions: React.FC = () => (
-        <ExportButton onClick={triggerExport} loading={isLoading} />
-    );
+    const Actions: React.FC = () => ( <ExportButton onClick={triggerExport} loading={isLoading} />);
 
-    return (
-        <Row gutter={[16, 16]}>
-            <Col
-                xl={6}
-                lg={24}
-                xs={24}
-                style={{
-                    marginTop: "52px",
-                }}
-            >
-                <Card title={t("orders.filter.title")}>
-                    <Filter
-                        formProps={searchFormProps}
-                        filters={filters || []}
+    // ExpandedOrderDetails component
+    const ExpandedOrderDetails = ({ order }) => {
+
+    // Create details table
+    const { tableProps } = useTable({
+            resource: "orders",
+            permanentFilter: [
+                {
+                    field: "order.id",
+                    operator: "eq",
+                    value: order.id,
+                }
+            ]
+        })
+        const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+            message.info('Click on left button.');
+            console.log('click left button', e);
+        };
+
+        const handleMenuClick: MenuProps['onClick'] = (e) => {
+            message.info('Click on menu item.');
+            console.log('click', e.key);
+        };
+
+        const items: MenuProps['items'] = [
+            {
+                label: '1st menu item',
+                key: '1',
+                icon: <UserOutlined />,
+            },
+            {
+                label: '2nd menu item',
+                key: '2',
+                icon: <UserOutlined />,
+            },
+            {
+                label: '3rd menu item',
+                key: '3',
+                icon: <UserOutlined />,
+                danger: true,
+            },
+            {
+                label: '4rd menu item',
+                key: '4',
+                icon: <UserOutlined />,
+                danger: true,
+                disabled: true,
+            },
+        ];
+
+        const menuProps = {
+            items,
+            onClick: handleMenuClick,
+        };
+
+        return (
+            <>
+                <div style={{ fontWeight: 'bold' }}>
+                    Journal Entry: {order.journalEntry.text}
+                   <> <Space/></>
+                    {order.statuses.map(status => (
+                        <Space >
+                        <Tag color="blue" key={status.id}>{status.text}</Tag>
+                        </Space>
+                    ))}
+
+                </div>
+                    <Table >
+
+
+                <Table.Column
+                        title="Breakdown by"
+                     
+                        render={() => {
+                            const items: MenuItem[] = [
+                                {
+                                    label: '1st menu item',
+                                    key: '1',
+                                    icon: <UserOutlined />,
+                                },
+                                {
+                                    label: '2nd menu item',
+                                    key: '2',
+                                    icon: <UserOutlined />,
+                                },
+                                {
+                                    label: '3rd menu item',
+                                    key: '3',
+                                    icon: <UserOutlined />,
+                                    danger: true,
+                                },
+                                {
+                                    label: '4rd menu item',
+                                    key: '4',
+                                    icon: <UserOutlined />,
+                                    danger: true,
+                                    disabled: true,
+                                }
+                            ].map((item) => (<Menu.Item {...item}>{item.label}</Menu.Item>
+                            ))
+                            const menuProps = {
+                                items,
+                                onClick: handleMenuClick
+                            };
+                            return (
+                                <Dropdown menu={menuProps}>
+                                    <Button>
+                                        Select <DownOutlined />
+                                    </Button>
+                                </Dropdown>
+                            );
+                        }}
                     />
-                </Card>
-            </Col>
-            <Col xl={18} xs={24}>
-                <List
-                    headerProps={{
-                        extra: <Actions />,
-                    }}
-                >
+
+                <Table.Column
+                    key="percent"
+                    dataIndex="percent"
+                    title={t("orders.fields.percent")}
+                    //render={(value) => <TextField value={value} />}
+                />
+                <Table.Column
+                    key="value"
+                    dataIndex="value"
+                    title={t("orders.fields.value")}
+                       // render={(value) => { return (<NumberField options={{ currency: "USD", style: "currency", }} value={value} />); }} 
+                        sorter
+                        />
+                
+
+                <Table.Column
+                    key="category"
+                    dataIndex="category"
+                    title={t("orders.fields.category")}
+                   // render={(value) => (<DateField value={value} format="LLL" />)}  
+                        />
+
+
+            </Table>
+            </>
+        )
+        
+    }
+
+    return (        
+        <>
+         <Filter formProps={searchFormProps} filters={filters || []}/>
+        <Row gutter={[16, 16]}>
+            <Col span={24}>
+                <List  headerProps={{ extra: <Actions />, }} >
                     <Table
                         {...tableProps}
+                            expandable={{ expandedRowRender: (record) => <ExpandedOrderDetails order={record} />  }}
                         rowKey="id"
-                        onRow={(record) => {
-                            return {
-                                onClick: () => {
-                                    show("orders", record.id);
-                                },
-                            };
-                        }}
-                    >
+                        onRow={(record) => {return { onClick: () => {show("orders", record.id); },}; }}>
+
                         <Table.Column
                             key="orderNumber"
                             dataIndex="orderNumber"
                             title={t("orders.fields.orderNumber")}
                             render={(value) => <TextField value={value} />}
                         />
-                        <Table.Column<IOrder>
-                            key="status.text"
-                            dataIndex={["status", "text"]}
-                            title={t("orders.fields.status")}
-                            render={(value) => {
-                                return <OrderStatus status={value} />;
-                            }}
-                            defaultSortOrder={getDefaultSortOrder(
-                                "status.text",
-                                sorter,
-                            )}
-                            sorter
-                        />
+                            <Table.Column
+                                key="journalEntry.id"
+                                dataIndex={["journalEntry", "text"]}
+                                title={t("orders.fields.journalEntry")}
+                                sorter
+                            />
+                            <Table.Column<IOrder>
+                                key="account.id"
+                                dataIndex={["account", "title"]}
+                                title={t("orders.fields.account")}
+                                sorter
+                                render={(_, record) => (
+                                    <Popover
+                                        content={
+                                            <ul>
+                                                <li>{record?.account?.description}</li> 
+                                            </ul>
+                                        }
+                                        title="Description of accounting account"
+                                        trigger="hover"
+                                    >
+                                        {record?.account?.title} 
+                                    </Popover>
+                                )}
+                            />
+                       
+                        
+                       
                         <Table.Column
-                            align="right"
-                            key="amount"
-                            dataIndex="amount"
-                            title={t("orders.fields.amount")}
-                            defaultSortOrder={getDefaultSortOrder(
-                                "amount",
-                                sorter,
-                            )}
-                            sorter
-                            render={(value) => {
-                                return (
-                                    <NumberField
-                                        options={{
-                                            currency: "USD",
-                                            style: "currency",
-                                        }}
-                                        value={value}
-                                    />
-                                );
-                            }}
+                                key="category.fullName"
+                                dataIndex={["category", "fullName"]}
+                                title={t("orders.fields.category")}
+                                sorter
+                                
                         />
-                        <Table.Column
-                            key="store.id"
-                            dataIndex={["store", "title"]}
-                            title={t("orders.fields.store")}
-                        />
-                        <Table.Column
-                            key="user.fullName"
-                            dataIndex={["user", "fullName"]}
-                            title={t("orders.fields.user")}
-                        />
-                        <Table.Column<IOrder>
-                            key="products"
-                            dataIndex="products"
-                            title={t("orders.fields.products")}
-                            render={(_, record) => (
-                                <Popover
-                                    content={
-                                        <ul>
-                                            {record?.paymentTerms}
-                                        </ul>
-                                    }
-                                    title="Payment terms"
-                                    trigger="hover"
-                                >
-                                    {t("orders.fields.itemsAmount", {
-                                        amount: record?.paymentTerms,
-                                    })}
-                                </Popover>
-                            )}
-                        />
+                        
+                            <Table.Column
+                          
+                                key="credit"
+                                dataIndex="credit"
+                                title={t("orders.fields.credit")}
+                                render={(value) => {
+                                    return ( <NumberField options={{currency: "USD", style: "currency", }} value={value} />
+                                    );
+                                }}
+                            />
+                            <Table.Column
+                                
+                                key="debit"
+                                dataIndex="debit"
+                                title={t("orders.fields.debit")}
+                                render={(value) => {
+                                    return (<NumberField options={{ currency: "USD", style: "currency", }} value={value} />
+                                    );
+                                }}
+                            />
+                            
                         <Table.Column
                             key="createdAt"
                             dataIndex="createdAt"
                             title={t("orders.fields.createdAt")}
                             render={(value) => (
-                                <DateField value={value} format="LLL" />
-                            )}
-                            sorter
-                        />
+                                <DateField value={value} format="LLL" /> )}sorter/>
+                        
+                            <Table.Column<IOrder>
+                                key="statuses"
+                                dataIndex="statuses"
+                                title={t("orders.fields.status")}
+                                render={(statuses: IOrderStatus[]) => { // Now we expect statuses to be an array of strings
+                                    return ( <> {statuses.map((status) => (
+                                                <Tag color="blue" key={status.id}>
+                                                    {status.text}
+                                                </Tag> ))} 
+                                                </> ); }} />
+
                         <Table.Column<IOrder>
                             fixed="right"
                             title={t("table.actions")}
                             dataIndex="actions"
                             key="actions"
                             align="center"
-                            render={(_value, record) => (
-                                <OrderActions record={record} />
-                            )}
+                           // render={(_value, record) => (
+                            //    <OrderActions record={record} />
+                           // )}
                         />
                     </Table>
                 </List>
             </Col>
         </Row>
+     </>
     );
 };
 

@@ -19,6 +19,12 @@ import {
 } from "@ant-design/icons";
 import jsonServerDataProvider from "@refinedev/simple-rest";
 import { authProvider } from "./authProvider";
+import { BikeWhiteIcon, PizzaIcon } from "./components/icons";
+import {
+    ShopOutlined,
+    StarOutlined,
+    UsergroupAddOutlined,
+} from "@ant-design/icons";
 
 import "dayjs/locale/de";
 
@@ -32,6 +38,19 @@ import { ConfigProvider } from "./context";
 import { useAutoLoginForDemo } from "./hooks";
 
 import "@refinedev/antd/dist/reset.css";
+
+import { UserList, UserShow } from "./pages/users";
+import {
+    CourierList,
+    CourierShow,
+    CourierCreate,
+    CourierEdit,
+} from "./pages/couriers";
+import { ProductList } from "./pages/products";
+import { StoreCreate, StoreEdit, StoreList } from "./pages/stores";
+import { CategoryList } from "./pages/categories";
+import { ReviewsList } from "./pages/reviews";
+
 
 const App: React.FC = () => {
     // This hook is used to automatically login the user.
@@ -84,9 +103,51 @@ const App: React.FC = () => {
                                     icon: <ShoppingOutlined />,
                                 },
                             },
-                            
-                           
-                           
+                            {
+                                name: "users",
+                                list: "/users",
+                                show: "/users/show/:id",
+                                meta: {
+                                    icon: <UsergroupAddOutlined />,
+                                },
+                            },
+                            {
+                                name: "products",
+                                list: "/products",
+                                meta: {
+                                    icon: <PizzaIcon />,
+                                },
+                            },
+                            {
+                                name: "stores",
+                                list: "/stores",
+                                create: "/stores/create",
+                                edit: "/stores/edit/:id",
+                                meta: {
+                                    icon: <ShopOutlined />,
+                                },
+                            },
+                            {
+                                name: "categories",
+                                list: "/categories",
+                            },
+                            {
+                                name: "couriers",
+                                list: "/couriers",
+                                create: "/couriers/create",
+                                edit: "/couriers/edit/:id",
+                                show: "/couriers/show/:id",
+                                meta: {
+                                    icon: <BikeWhiteIcon />,
+                                },
+                            },
+                            {
+                                name: "reviews",
+                                list: "/reviews",
+                                meta: {
+                                    icon: <StarOutlined />,
+                                },
+                            },
                         ]}
                     >
                         <Routes>
@@ -120,7 +181,7 @@ const App: React.FC = () => {
                                         element={<OrderShow />}
                                     />
                                 </Route>
-                                {/*
+                         
                                 <Route path="/users">
                                     <Route index element={<UserList />} />
                                     <Route
@@ -128,14 +189,12 @@ const App: React.FC = () => {
                                         element={<UserShow />}
                                     />
                                 </Route>
-                                */}
-                                {/*
+                              
                                 <Route
                                     path="/products"
                                     element={<ProductList />}
                                 />
-                                */}
-                                {/*
+                               
                                 <Route path="/stores">
                                     <Route index element={<StoreList />} />
                                     <Route
@@ -147,16 +206,16 @@ const App: React.FC = () => {
                                         element={<StoreEdit />}
                                     />
                                 </Route>
-                                */}
+                                
 
-                                {/*
+                         
                                 <Route
                                     path="/categories"
                                     element={<CategoryList />}
                                 />
-                                */}
+                             
 
-                                {/*
+                                
                                 <Route path="/couriers">
                                     <Route index element={<CourierList />} />
                                     <Route
@@ -177,7 +236,7 @@ const App: React.FC = () => {
                                     path="/reviews"
                                     element={<ReviewsList />}
                                 />
-                                */}
+                               
                             </Route>
                                 
                             <Route
