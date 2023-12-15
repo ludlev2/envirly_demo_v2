@@ -3,9 +3,13 @@ import { useTranslation } from "react-i18next";
 import {
    
  RecentOrders,
+    
      // Ensure that this is imported since it will now be used
 } from "../../components";
+import {TotalRevenue} from "../../components/dashboard/totalRevenue";
+import { SankeyDiagram } from "../../components/dashboard/sankeyDiagram";
 import LineChart from "../../components/chart/LineChart";
+import EChart from "../../components/chart/EChart";
 
 
 import {useState} from "react";
@@ -40,6 +44,10 @@ export const DashboardPage: React.FC = () => {
                            // }}
                         >
                             <LineChart />
+                            <EChart />
+                            <TotalRevenue />
+                            <SankeyDiagram />
+
                         </Card>
                     </Col>
                     
@@ -57,6 +65,7 @@ export const DashboardPage: React.FC = () => {
                             }
                         >
                             <RecentOrders />
+                            
                         </Card>
                     </Col>
                 </Row>

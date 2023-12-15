@@ -30,6 +30,8 @@ import { useTranslation } from "react-i18next";
 import { Header, Title, OffLayoutArea } from "./components";
 import { ConfigProvider } from "./context";
 import { useAutoLoginForDemo } from "./hooks";
+import { CreateInvoice, EditInvoice, InvoiceList } from "./pages/invoices";
+
 
 import "@refinedev/antd/dist/reset.css";
 
@@ -84,12 +86,20 @@ const App: React.FC = () => {
                                     icon: <ShoppingOutlined />,
                                 },
                             },
+                            {
+                                name: "invoices",
+                                list: "/invoices",
+                                create: "/invoices/create",
+                                edit: "invoices/:id/edit",
+                               // icon: <FileAddOutlined />,
+                            },
                             
                            
                            
                         ]}
                     >
                         <Routes>
+                           
                             <Route path="/welcome" element={<Welcome />} />
                             {/*
                             <Route path="/grantManagement" element={<GrantManagement />} />
@@ -112,6 +122,18 @@ const App: React.FC = () => {
                                 }
                             >
                                 <Route index element={<DashboardPage />} />
+
+                                <Route path="/invoices">
+                                    <Route index element={<InvoiceList />} />
+                                    <Route
+                                        path="/invoices/create"
+                                        element={<CreateInvoice />}
+                                    />
+                                    <Route
+                                        path="/invoices/:id/edit"
+                                        element={<EditInvoice />}
+                                    />
+                                </Route>
 
                                 <Route path="/orders">
                                     <Route index element={<OrderList />} />
