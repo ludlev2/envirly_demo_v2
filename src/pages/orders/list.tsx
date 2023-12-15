@@ -121,32 +121,24 @@ export const OrderList: React.FC<IResourceComponentsProps> = () => {
             {
                 label: '1st menu item',
                 key: '1',
-                icon: <UserOutlined />,
             },
             {
                 label: '2nd menu item',
                 key: '2',
-                icon: <UserOutlined />,
             },
             {
                 label: '3rd menu item',
                 key: '3',
-                icon: <UserOutlined />,
-                danger: true,
+                
             },
             {
                 label: '4rd menu item',
                 key: '4',
-                icon: <UserOutlined />,
-                danger: true,
-                disabled: true,
+             
             },
         ];
 
-        const menuProps = {
-            items,
-            onClick: handleMenuClick,
-        };
+        ;
 
         return (
             <>
@@ -163,48 +155,19 @@ export const OrderList: React.FC<IResourceComponentsProps> = () => {
                     <Table >
 
 
-                <Table.Column
+                    <Table.Column
                         title="Breakdown by"
-                     
-                        render={() => {
-                            const items: MenuItem[] = [
-                                {
-                                    label: '1st menu item',
-                                    key: '1',
-                                    icon: <UserOutlined />,
-                                },
-                                {
-                                    label: '2nd menu item',
-                                    key: '2',
-                                    icon: <UserOutlined />,
-                                },
-                                {
-                                    label: '3rd menu item',
-                                    key: '3',
-                                    icon: <UserOutlined />,
-                                    danger: true,
-                                },
-                                {
-                                    label: '4rd menu item',
-                                    key: '4',
-                                    icon: <UserOutlined />,
-                                    danger: true,
-                                    disabled: true,
-                                }
-                            ].map((item) => (<Menu.Item {...item}>{item.label}</Menu.Item>
-                            ))
-                            const menuProps = {
-                                items,
-                                onClick: handleMenuClick
-                            };
-                            return (
-                                <Dropdown menu={menuProps}>
-                                    <Button>
-                                        Select <DownOutlined />
-                                    </Button>
-                                </Dropdown>
-                            );
-                        }}
+                        dataIndex="breakdownBy"
+                        key="breakdownBy"
+                        render={() => (
+                            <Dropdown overlay={<Menu onClick={handleMenuClick} items={items} />}>
+                                <Button>
+                                    <Space>
+                                        Button <DownOutlined />
+                                    </Space>
+                                </Button>
+                            </Dropdown>
+                        )}
                     />
 
                 <Table.Column
