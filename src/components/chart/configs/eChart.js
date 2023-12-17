@@ -12,6 +12,7 @@ const eChart = {
       type: "bar",
       width: "100%",
       height: "auto",
+      
 
       toolbar: {
         show: false,

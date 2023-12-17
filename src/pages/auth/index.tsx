@@ -21,7 +21,7 @@ const renderAuthContent = (content: React.ReactNode) => {
             <Link to="/welcome">
                 <img
                     style={{ marginBottom: 26 }}
-                    src="/images/web3found.png"
+                    src="/images/envirly_logo.png"
                     alt="Logo"
                     width="100%"
                 />

@@ -25,41 +25,7 @@ function LineChart() {
 
   const handleChange = (value) => {
     switch (value) {
-      case "dot":
-        setSeries([
-          
-              {
-                "name": "Outflows",
-                "data": [100, 280, 240, 380, 480, 770, 780, 510, 690, 880],
-                "offsetY": 0
-              },
-              {
-                "name": "Inflows",
-                "data": [300, 500, 500, 790, 800, 910, 950, 1020, 1000, 1060],
-                "offsetY": 0
-              }
-            
-          
-        ]);
-
-        break;
-      case "usdc":
-        setSeries([
-          {
-            name: "Outflows",
-            data: [303, 280, 530, 280, 420, 570, 680, 810, 790, 880],
-
-            offsetY: 0,
-          },
-          {
-            name: "Inflows",
-            data: [200, 600, 640, 690, 820, 610, 850, 920, 900, 960],
-            offsetY: 0,
-          },
-        ]);
-
-        break;
-      case "usd":
+      case "pln":
         setSeries([
           {
             "name": "Outflows",
@@ -102,7 +68,7 @@ function LineChart() {
         <div>
           
 
-          <Title level={3}>Net cash flow ${netCashFlow}k</Title>
+          <Title level={3}>Net cash flow {netCashFlow}k</Title>
          
   
         </div>
@@ -110,13 +76,11 @@ function LineChart() {
      
       </div>
       <Select
-        defaultValue="DOT"
+        defaultValue="PLN"
         style={{ width: 120 }}
         onChange={handleChange}
         options={[
-          { value: 'dot', label: 'DOT' },
-          { value: 'usdc', label: 'USDC' },
-          { value: 'usd', label: 'USD' },
+          { value: 'pln', label: 'PLN' },
           { value: 'eur', label: 'EUR' },
         ]}
       />

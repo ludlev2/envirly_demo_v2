@@ -41,11 +41,9 @@ export const CreateInvoice: React.FC<IResourceComponentsProps> = () => {
                 layout="vertical"
                 wrapperCol={{ md: 18, lg: 16 }}
             >
-                <Form.Item label="Invoice Name" name="name">
-                    <Input />
-                </Form.Item>
+               
                 <Form.Item
-                    label="Company"
+                    label="Report Type"
                     name="company"
                     rules={[
                         {
@@ -53,11 +51,12 @@ export const CreateInvoice: React.FC<IResourceComponentsProps> = () => {
                         },
                     ]}
                 >
-                    <Select {...companySelectProps} />
+                    <Select {...companySelectProps}>
+                    </Select>
                 </Form.Item>
 
                 <Form.Item
-                    label="Missions"
+                    label="Report Type"
                     name="missions"
                     rules={[
                         {

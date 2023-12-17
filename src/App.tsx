@@ -16,6 +16,9 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import {
     ShoppingOutlined,
     DashboardOutlined,
+    BarChartOutlined ,
+    EuroCircleOutlined ,
+    AuditOutlined
 } from "@ant-design/icons";
 import jsonServerDataProvider from "@refinedev/simple-rest";
 import { authProvider } from "./authProvider";
@@ -34,6 +37,7 @@ import { CreateInvoice, EditInvoice, InvoiceList } from "./pages/invoices";
 
 
 import "@refinedev/antd/dist/reset.css";
+import { MetricsPage } from "./pages/metrics";
 
 const App: React.FC = () => {
     // This hook is used to automatically login the user.
@@ -74,16 +78,18 @@ const App: React.FC = () => {
                                 name: "dashboard",
                                 list: "/",
                                 meta: {
-                                    label: "Dashboard",
-                                    icon: <DashboardOutlined />,
+                                    label: "Cash",
+                                    icon: <EuroCircleOutlined />,
                                 },
                             },
+                            
                             {
-                                name: "orders",
-                                list: "/orders",
-                                show: "/orders/show/:id",
+                                name: "metrics",
+                                list: "/metrics",
+                                show: "/metrics",
                                 meta: {
-                                    icon: <ShoppingOutlined />,
+                                label:"Metrics",
+                                icon: <BarChartOutlined/>,
                                 },
                             },
                             {
@@ -91,7 +97,11 @@ const App: React.FC = () => {
                                 list: "/invoices",
                                 create: "/invoices/create",
                                 edit: "invoices/:id/edit",
-                               // icon: <FileAddOutlined />,
+                                meta: {
+                                    label: "Reports",
+                                    icon: <AuditOutlined />,
+                                },
+                               
                             },
                             
                            
@@ -132,6 +142,14 @@ const App: React.FC = () => {
                                     <Route
                                         path="/invoices/:id/edit"
                                         element={<EditInvoice />}
+                                    />
+                                </Route>
+
+                                <Route path="/metrics">
+                                    <Route index element={<MetricsPage />} />
+                                    <Route
+                                        path="show/:id"
+                                        element={<MetricsPage />}
                                     />
                                 </Route>
 
@@ -219,7 +237,7 @@ const App: React.FC = () => {
                                             type="login"
                                             formProps={{
                                                 initialValues: {
-                                                    email: "luca@web3.foundation",
+                                                    email: "mateusz@envirly.org",
                                                     password: "demodemo",
                                                 },
                                             }}
@@ -233,7 +251,7 @@ const App: React.FC = () => {
                                             type="register"
                                             formProps={{
                                                 initialValues: {
-                                                    email: "luca@web3.foundation",
+                                                    email: "mateusz@envirly.org",
                                                     password: "demodemo",
                                                 },
                                             }}

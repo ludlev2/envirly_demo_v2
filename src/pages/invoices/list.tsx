@@ -35,6 +35,59 @@ export const InvoiceList: React.FC = () => {
 
     const { show, visible, close } = useModal();
 
+    const hardCodedData = [
+        {
+            "id": "inv-001",
+            "name": "Monthly Web Services",
+            "date": "2023-12-01T00:00:00Z",
+            "company": {
+                "id": "comp-123",
+                "name": "Web Solutions Inc.",
+                "address": "1234 Internet Blvd, Tech City",
+                "country": "Techland",
+                "city": "Innovate",
+                "email": "contact@websolutions.com",
+                "website": "https://www.websolutions.com",
+                "logo": {
+                    "url": "https://www.websolutions.com/logo.png"
+                }
+            },
+            "discount": 10,
+            "tax": 7.5,
+            "custom_id": "WSI-INV-123",
+            "comments": "Thank you for your business!",
+            "contact": {
+                "id": "contact-789",
+                "first_name": "John",
+                "last_name": "Doe",
+                "client": {
+                    "id": "client-456",
+                    "name": "Acme Corp."
+                },
+                "email": "john.doe@acmecorp.com"
+            },
+            "missions": [
+                {
+                    "id": "mission-001",
+                    "mission": "Website Redesign",
+                    "mission_description": "Complete overhaul of the corporate website.",
+                    "day": 15,
+                    "daily_rate": 500
+                },
+                {
+                    "id": "mission-002",
+                    "mission": "SEO Optimization",
+                    "mission_description": "Search engine optimization for increased visibility.",
+                    "day": 10,
+                    "daily_rate": 300
+                }
+            ],
+            "status": {
+                "status": "No Paid"
+            }
+        }
+    ];
+
     return (
         <>
             <List>
@@ -42,25 +95,25 @@ export const InvoiceList: React.FC = () => {
                     <Table.Column dataIndex="id" title="ID" />
                     <Table.Column<IInvoice>
                         dataIndex="name"
-                        title="Invoice Name"
+                        title="Report Name"
                         render={(_, record) => {
-                            return `Invoice_#${record.id}${record?.name}`;
+                            return `${record.id}${record?.name}`;
                         }}
                     />
                     <Table.Column<IInvoice>
                         dataIndex="date"
-                        title="Invoice Date"
+                        title="Date"
                         render={(value) => (
                             <DateField format="LL" value={value} />
                         )}
                     />
                     <Table.Column
                         dataIndex={["company", "name"]}
-                        title="Company"
+                        title="Type"
                     />
                     <Table.Column
                         dataIndex={"missions"}
-                        title="Missions"
+                        title="Metric"
                         render={(value) => {
                             return value.map((item: IMission) => {
                                 return (
@@ -73,24 +126,7 @@ export const InvoiceList: React.FC = () => {
                             });
                         }}
                     />
-                    <Table.Column
-                        dataIndex="discount"
-                        title="Discount(%)"
-                        render={(value) => (
-                            <TagField color="blue" value={value} />
-                        )}
-                    />
-                    <Table.Column
-                        dataIndex="tax"
-                        title="Tax(%)"
-                        render={(value) => (
-                            <TagField color="cyan" value={value} />
-                        )}
-                    />
-                    <Table.Column
-                        dataIndex="custom_id"
-                        title="Custom Invoice ID"
-                    />
+                    
 
                     <Table.Column
                         dataIndex={["contact", "email"]}
