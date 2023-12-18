@@ -66,15 +66,7 @@ export const CreateInvoice: React.FC<IResourceComponentsProps> = () => {
                 >
                     <Select {...missionSelectProps} mode="multiple" />
                 </Form.Item>
-                <Form.Item label="Discount(%)" name="discount">
-                    <Input />
-                </Form.Item>
-                <Form.Item label="Tax(%)" name="tax">
-                    <Input />
-                </Form.Item>
-                <Form.Item label="Custom ID" name="custom_id">
-                    <Input />
-                </Form.Item>
+                
                 <Form.Item
                     label="Contact"
                     name="contact"
