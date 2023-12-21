@@ -5,7 +5,8 @@ import { CheckCircleOutlined, CheckCircleTwoTone } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import quickbooksLogo from '~/images/qb_logo.png';
 import amexLogo from '~/images/credit_suisse.png';
-
+import bnpLogo from '~/images/bnp_paribas.png';
+import infaktLogo from '~/images/infakt_logo.png';
 
 interface StyleProps {
     style: React.CSSProperties;
@@ -124,7 +125,7 @@ export const Welcome: React.FC = () => {
     };
 
     const logoStyle: React.CSSProperties = {
-        width: '20px', // Set the width as desired
+        width: '50px', // Set the width as desired
         height: 'auto', // Keep the aspect ratio
     };
     const buttonStyle: React.CSSProperties = {
@@ -138,7 +139,7 @@ export const Welcome: React.FC = () => {
     };
 
     const iconStyle: React.CSSProperties = {
-        marginRight: '10px', // Add space between icon and text
+        marginRight: '20px', // Add space between icon and text
     };
 
     const statusIconStyle: React.CSSProperties = {
@@ -151,12 +152,12 @@ export const Welcome: React.FC = () => {
         <div style={buttonStyle}>
             <Button
                 onClick={handleQuickBooksConnect}
-                icon={<img src={quickbooksLogo} alt="QuickBooks" style={logoStyle} />}
+                icon={<img src={infaktLogo} alt="QuickBooks" style={logoStyle} />}
                 disabled={quickBooksClicked}
                 style={{ flexGrow: 1 }} // Ensure button takes full width
                 block // Ant Design property to make the button display block (full width)
             >
-                Connect QuickBooks
+                Connect InFakt
             </Button>
             {quickBooksClicked && (
                 quickBooksLoading ? <Spin /> : <CheckCircleOutlined style={{ color: 'green', marginLeft: 8 }} />
@@ -168,7 +169,7 @@ export const Welcome: React.FC = () => {
         <div style={buttonStyle}>
             <Button
                 onClick={handleBanksConnect}
-                icon={<img src={amexLogo} alt="American Express" style={logoStyle} />}
+                icon={<img src={bnpLogo} alt="American Express" style={logoStyle} />}
                 disabled={banksClicked}
                 style={{ flexGrow: 1 }} // Ensure button takes full width
                 block // Ant Design property to make the button display block (full width)
@@ -188,7 +189,7 @@ export const Welcome: React.FC = () => {
                 {showConfetti && <ConfettiComponent />}
             </Suspense> */}
             <div style={whiteBoxStyle}>
-                <Title>Welcome, Luca!</Title>
+                <Title>Welcome, Mateusz!</Title>
 
                 {quickBooksButton}
                 {banksButton}

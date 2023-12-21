@@ -166,7 +166,18 @@ export const InvoiceList: React.FC = () => {
                 </Table>
             </List>
             <Modal visible={visible} onCancel={close} width="80%" footer={null}>
-                <PdfLayout record={record} />
+                {visible && (
+                    <object
+                        data={'~/images/invoices/investor_Report_example.pdf'}
+                        type="application/pdf"
+                        width="100%"
+                        height="100%"
+                    >
+                        <p>Your browser does not support PDFs.
+                            <a href={'~/images/invoices/investor_Report_example.pdf'}>Download the PDF</a> to view it.
+                        </p>
+                    </object>
+                )}
             </Modal>
         </>
     );

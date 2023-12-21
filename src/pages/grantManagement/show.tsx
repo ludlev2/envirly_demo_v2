@@ -14,7 +14,7 @@ const { useBreakpoint } = Grid;
 const { Text } = Typography;
 
 
-const pdfUrl = "/images/invoices/invoice_2.pdf";
+const pdfUrl = "/images/invoices/investor_Report_example.pdf";
 
 const renderPdf = () => {
     return (
