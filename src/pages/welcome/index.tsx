@@ -10,7 +10,7 @@ import amexLogo from '~/images/credit_suisse.png';
 interface StyleProps {
     style: React.CSSProperties;
 }
-const ConfettiComponent = lazy(() => import("./confetti"));
+// const ConfettiComponent = lazy(() => import("./confetti"));
 
 const { Title } = Typography;
 
